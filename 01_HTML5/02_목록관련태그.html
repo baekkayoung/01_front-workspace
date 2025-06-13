@@ -4,10 +4,10 @@
         <title>목록 관련 태그</title>
     </head>
     <body>
-       <li>목록 1</li> <!-- 닷 -->
+       <li>목록 1</li> <!-- 닷으로 표시 -->
        <li>목록 2</li>
 
-       <h3>ul 태그는 순서가 없는 태그 </h3>
+       <h1>ul: 순서 없는 목록 태그</h3>
        <ul>
             <li>html</li>
             <li>CSS</li>
@@ -17,24 +17,22 @@
 
        <!--불릿 기호 : 채워진 원, 빈원, 네모난 거..-->
     
-       <h3>중첩으로도 가능</h3>
-        <ul>
-
-            <li>html</li>
-                <ul>    <!-- ul로 감싸기-->
-
-                    <li>글자관련태그</li>
-                    <li>글자관련태그</li>
-                <ul><li>글자관련태그</li></ul>
-
-                </ul>
-
-            <li>CSS</li>
-            <li>javaScript</li>
-            <li>jQuery</li>
-
-        </ul>
-
+       <h3>중첩으로도 가능</h3><!--채워진 원 - 빈 원 - 네모 순-->
+            <ul>
+                <li>html
+                    <ul> <!-- ul로 감싸기 -->
+                        <li>글자관련태그</li>
+                        <li>글자관련태그
+                            <ul>
+                                <li>글자관련태그</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>CSS</li>
+                <li>javaScript</li>
+                <li>jQuery</li>
+            </ul>
 
         <hr>
         <h1>ol: 순서 있는 목록 태그 </h1>
@@ -66,7 +64,7 @@
 
         <!-- reversed 속성을 통해 역순으로 표기 가능 --> 
           <ol reversed> 
-            <!-- 속성명=속성값은 속성값별도로 제시 안 해도 됨-->
+            <!-- 속성명=속성값은 속성값을 별도로 제시 안 해도 됨-->
             <li>html</li>
             <li>CSS</li>
             <li>javaScript</li>
