@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력양식 및 폼관련 태그</title>
+</head>
+<body>
+    
+    <h1>입력 양식 관련 태그</h1>
+
+    <h2>input 태그</h2>
+    <p>사용자에게 값을 입력받을 수 있는 텍스트 상자 또는 체크박스 등등을 만들 수 있음</p>
+
+    아이디 : <input type="text"><br><!--인라인 요소-->
+    비밀번호 : <input type="password"><br>
+    성별 : <input type="radio">남
+           <input type="radio">여<br>
+           <input type="submit" value="회원가입">
+
+    <hr>
+
+    <h1> 폼 관련 태그</h1>  
+
+    <p>form태그 내에 submit이라는 버튼 클릭시 해당 form 안에 작성된<br>
+        사용자가 사용한 값을 서버로 넘기면서 요청하는 역할 수행 <br>
+        
+        form action="" method="" <br><br>
+        * action 속성 : 해당 form에 사용자가 입력한 값을 전달하면서 요청할 서버의 경로 제시<br>
+        * method 속성 : 요청 전송 방식을 지정하는 속성 (get(기본값)/post) <br>
+        > get 방식 : 요청시 사용자가 입력한 값들이 url에 노출되는 방식<br>
+        > post 방식 : 요청시 사용자가 입력한 값들이 url에 노출되지 않는 방식<br>
+
+        form 내에 submit 버튼클릭시 action 지정한 서버로 사용자가 입력한 값들이 넘어가면서 요청이 됨(사용자가 입력한 값들은 항상 key=value 세트로 전달
+    </p>
+
+    <form action="search.do" method="post"> <!-- 메소드 안 적으면 자동으로 get 방식임-->
+        검색어 : <input type="text" name="keyword"> <!-- name값으로 key값을 부여함-->
+        <input type="submit" value="검색">
+    </form>
+
+    <hr>
+    <h3>field : 그룹을 묶는 태그</h3>
+    <h3>legend : 해당 그룹에 제목을 붙이는 태그</h3>
+
+    <form action="test.do" method="post">
+
+        <fieldset>
+            <legend>제목1</legend>
+            입력 1 : <input type="text" name="text1" placeholder="입력해주세요"><br> <!-- 흐릿하게 -->
+            입력 2 : <input type="text" name="text2"><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>제목2</legend>
+            입력3 : <input type="text" name="text3"><br>
+            입력4 : <input type="text" name="text4"><br>
+        </fieldset> 
+
+        <input type="submit">  <!-- submit, reset 버튼은 무조건 form 안쪽에-->
+        <!-- key랑 value를 안 적으면 get 방식임에도 불구하고 url에서 안 뜸 / 꼭 작성해야 날아감-->
+
+         <input type="reset">
+
+    </form>
+
+    <hr>
+
+    <h2>텍스트와 관련된 input 태그의 타입</h2>
+
+    <form action="test.do" method="get">
+        <h3>type="txt"</h3>
+        <p>
+            -한 줄 짜리 텍스트를 입력할 수있는 텍스트 상자
+            -생략하거나 잘못쓰면 자동으로 type="text"가 된다. <!-- text99라고 작성하더라도 -->
+        </p>
+
+        아이디 : <input type="text" name="userId" placeholder="아이디를 입력해주세요" maxlength="12"><br>
+
+        <br>
+
+        <h3>type="password"</h3>
+        <p>
+            -비밀번호를 입력할 수 있는 텍스트 상자
+        </p>
+
+        비밀번호 : 
+        <input type="password" name="userPwd" placeholder="영문, 숫자, 특수문자 8~15" maxlength="15">
+
+    <h3>type="search | url | email  | phone"</h3>
+    텍스트 상자와 유사하지만 각각의 정보에 맞게 세분화된 기능 제공
+    
+    <br>
+
+    검색 : 
+    <input type="search" name="keyword"> <br>
+    
+    홈페이지 :
+    <input type="url" name="homepage" required value="http://"> <br>
+
+    이메일 :
+    <input type="email" name="email" required> <br> <!-- 굳이 value= ""를 작성하지 않아도, < 모두 이렇게 비어있는 상태-->
+
+    전화번호 :  
+    <input type="phone" name="phone"> <br>
+    <!--
+        모바일로 키면 숫자 키패드가 열림
+    -->
+    <br><br>
+    <input type="submit">
+
+    </form>
+
+    <h2>textarea</h2>
+    <p>
+        -텍스트 상자이나 여러 줄을 입력할 수 있음
+    </p>
+
+    <form action="test.do"> <!--액션 데이터를 넘길 서버의 주소-->
+        <fieldset>
+            <legend>글작성</legend>
+            제목 : <input type="text" name="title" size="30"><br>
+            내용 : <textarea name="content" placeholder="내용을 입력해주세요" cols="35" rows="10" style="resize:none;">
+            </textarea>
+            <br><br>
+
+             <input type="submit" value="작성하기">
+        </fieldset>
+
+
+
+    </form>
+
+    <hr>
+    
+    <h2>숫자와 관련된 input 태그의 타입</h2>
+    <form action="test.do">
+
+        <h3>type="number"</h3>
+        <p>
+            - 숫자값만 작성 가능한 텍스트 상자<br>
+            - 스핀박스가 표시 됨(스핀박스 : 위/아래 화살표 버튼)
+        </p>
+
+        수량 : <input type="number" name="amount" min="0" max="20" step="5" value="0"> <!--step 태그 : 배수만큼 올라감/ value 태그: 적어두는 대로 -->
+        <hr>
+
+        <h3>type="range"</h3>
+
+        <p>
+            -슬라이드바를 통해 숫자 지정 가능
+        </p>
+
+        점수 : <input type="range" name="score" min="0" max="100" step="20">
+        <br>
+
+        <input type="submit">
+
+    </form>
+
+
+    <hr>
+
+
+    <h2>날짜 및  시간과 관련된 input 태그의 타입</h2>
+
+    <h3>type="date|month|week|time|datetime-local</h3>
+
+    <form action="text.do">
+
+
+        date : <input type="date" name="datein"><br>
+        <!-- 연도, 월, 일 입력 받을 수 있는 텍스트 상자 -->
+        month : <input type="month" name="monthin"><br>
+        <!-- 연도, 월 까지만 입력받을 수 있는 텍스트 상자-->
+        
+        week : <input type="week" name="weekIn"><br>
+        <!-- 연도, 해당 연도에 몇번째 주인지입력받을 수 있ㄴ텍스트 상자 -->
+        time : <input type="time" name="timeIn"><br>
+        <!-- 오전|오후, 시, 분 입력받을 수있는 텍스트 상자 -->
+        datetime-local : <input type="datetime-local" name="dateIn2">
+        <!-- 연도, 월, 일, 오전|오후 시, 분 입력받을 수 있는 상자-->
+        <br><br>
+        
+        <input type="submit">
+        <input type="reset">
+
+
+    </form>
+
+    <h2>라디오 버튼과 체크박스 관련 input 태그의 타입</h2>
+
+    <form action="text.do">
+        
+        <h3>라디오 버튼(type="radio")</h3>
+
+        <p>
+            -제시한 여러개의 값들 중에서 오로지 한 개만 선택해야 될 때 <br>
+            (name 속성 값이 똑같은 것들 끼리 하나의 그룹으로 지어짐) <br>           -제출시 현재 선택된(checked) 라디오 버튼의 value값이 넘어감
+        </p>
+        
+        <!-- name 값을 동일하게 설정하지 않으면 죄다 눌리게 됨 / 푸는 건 없음
+            value를 무조건 작성해 줘야함 : 라디오 버튼을 누른거라서\
+            
+            label 태그와 id 값은 세트 : 텍스트를 눌러도 라디오 버튼이 눌리는 효과 -->
+
+        성별 : <input type="radio" name="gender" value="X" id="radioX">
+        <label for="radioX">선택안함</label>
+
+        <input type="radio" name="gender" value="M" id="radioM"> 
+        <label for="radioM">남자</label>
+
+        <input type="radio" name="gender" value="F" id="radioF"> 
+        <label for="radioF">여자</label>
+
+
+        <h3>체크박스(type="checkbox")</h3>
+        <p>
+            - 제시한 여러개의 값들 중에서 여러개 선택할 경우<br>
+            - 제출시 현재 선택된(checked) 체크박스의 value 값 넘어감
+
+        </p>
+
+        취미 : 
+        <input type="checkbox" name="hobby" id="reading" value="reading" >
+        <label for="reading">독서</label>
+        
+        <input type="checkbox" name="hobby" id="sports" value="sports">
+        <label for="sports">운동</label>
+
+        <input type="checkbox" name="hobby" id="movie" value="movie">
+        <label for="movie">영화보기</label>
+        
+        
+        <br><br>
+        <input type="submit" >
+
+
+    </form>
+
+    <hr>
+
+    <h2>추가적인 input 태그의 타입</h2>
+    <form action="test.do">
+
+        <h3>type="color"</h3>
+        <p>
+            -색상을 선택할 수 있는 input
+
+        </p>
+        
+        색상 선택 : <input type="color" name="color"><br>
+        <h3>type="file"</h3>
+        <p>
+            -첨부하고자 하는 파일을 선택할 수 있는 input
+        </p>
+        파일 첨부 : <input type="file" name="uploadFile"><br>
+
+        <h3>type="hidden"</h3>
+        <p>
+            -어떤 특정 값을 사용자에게 입력받지 않고, 화면에 노출시키지도 않지만, 넘기고자 하는 값이 있을 경우 사용
+        </p>        
+        <input type="hidden" name="hiddenValue" value="ㅋㅋㅋ"><br>
+
+        <br><br>
+
+        <h3>input type="submit|reset|button"</h3>
+        <input type="submit"> <!-- value="제출" -->
+        <input type="reset"> <!-- value="초기화" -->
+        <input type="button" value="일반버튼"> <!-- 일반 버튼은 서버로 못 보냄 / 제출 버튼이랑 완전 다른 버튼-->
+
+        <h3>button[type="submit|reset|button"]</h3>
+        <button type="submit">제출</button>
+        <button type="reset">초기화</button>
+        <button type="button">일반버튼</button>
+        <br>
+        <button>이건?</button> <!-- 버튼 타입을 생략하면 자동으로 submit -->
+        <!-- 위아래 같음 인풋으로 하나 버튼으로 하나-->
+
+    </form>
+
+    <hr>
+        <h2>selcet 태그와 option 태그</h2>
+        <p>
+            -사용자에게 직접 키보드로 값을 입력받는 게 아니라<br>
+             내가 제시한 여러개의 옵션(목록)들 중에서 선택할 수 있게끔<br>
+            -제출시 현재 선택된(selceted) option의 값이 넘어감
+            -각각의 option에 value값을 명시하지 않았을 경우 content 영역의 값이 넘어감
+            -value 값을 명시했을 경우 value 값이 넘어감
+        </p>
+
+        <form action="test.do">
+
+            국적 : 
+            <select name="national">
+                <option value="ko">한국</option>
+                <option value="us">미국</option>
+                <option value="eu">영국</option>
+                <option value="ru">러시아</option>
+                <option value="" selected>선택안함</option> <!-- 속성명 = 속성값 -->
+            </select>
+            
+            <input type="submit">
+
+        </form>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br>
+    </picture>
+</body>
+
+
+</html>
