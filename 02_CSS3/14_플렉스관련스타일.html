@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플렉스관련스타일</title>
+    <style>
+        div {
+            background-color: thistle;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #container {
+            width: 100%; height: 100%;
+            background-color: brown;
+            margin: auto;
+            padding: 0px;
+            border: 1px solid lime;
+            display: flex; /*부모에게 써야함*/
+        }
+
+        .justify-content-test {
+            justify-content: flex-start; /*기본값*/
+            justify-content: flex-end; /*끝으로 정렬*/
+            justify-content: space-between; /*양쪽으로 정렬*/
+            justify-content: space-evenly; /* 일정한 공백을 두고 정렬*/
+            justify-content: space-around; /* 요소의 양 옆에 공백을 두고 정렬 */
+            justify-content: center; 
+        
+        }
+
+        .flex-direction-test{
+            flex-direction: row; /*기본값*/
+            flex-direction: row-reverse; /*가로 기준 역순으로 정렬*/
+            flex-direction: column; /*세로로 정렬*/
+            flex-direction: column-reverse; /*세로 기준으로 역순*/ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+            
+        }
+
+        .align-items-test {
+            flex-direction: column; /* align-times 세로 속성을 쓰려면 이거부터 해야됨*/
+            align-items: center; /*align-items:center는 교차축을 기준으로 정렬 
+                                    flex-direvtion: column을 설정해야 가로 중앙 정렬이 가능해짐*/
+
+        }
+
+        .flex-wrap-test {
+            flex-wrap: nowrap; /*기본값*/
+            flex-wrap: wrap
+        }
+
+    </style>
+</head>
+<body>+
+    <h1>플렉스 관련 스타일</h1>
+    <pre>
+        선택자{
+            display:flrex;
+        }
+
+        *요소를 통해 레이아웃을 구성시 별다른 사이즈, 크기, 정렬을 지정하지 않아도
+        유연하게 (felx) 처리하는 속성
+    </pre>
+
+
+    <div id="container">
+        <div>FLEX</div>
+        <div>FLEX</div>
+    </div>
+
+    <h3>justify-cantent: 요소들을 "가로" 선상에서 정렬하도록 도와주는 속성</h3>
+
+    <pre>
+        선택자{
+            justify-cantent: flex-start | flex-end | center | space-between | space-evenly | space-around
+        }
+    </pre>
+
+    <div id="container" class="justify-content-test">
+        <div>FLEX1</div>
+        <div>FLEX2</div>
+    </div>
+    만약에 flex-direction의 값이 column 혹은 column-reverse가 되면
+    justify-content가 세로선상, align-items가 가로 선상으로 바뀜!
+    <h3>flex-dirention : flex요소들의 정렬 방향을 지정</h3>
+    <pre>
+        선택자 {
+            flex-dirention : row | row-reverse | colum | column-reverse:
+        }
+    </pre>
+
+    <div id="container" class="flex-direction-test">
+        <div>FLEX1</div>
+        <div>FLEX2</div>
+
+    </div>
+
+    <h3>align-items : 요소들을 "세로" 선상에서 정렬하는 속성</h3>
+    <pre>
+        선택자 {
+            align-items : flex-start | flex-end | center | baseline | stretch
+        }
+
+        align-content: 두 줄일 때 적용
+    </pre>
+
+    <div id="container" class="align-items-test">
+        <div>FLEX1</div>
+        <div>FLEX2</div>
+    </div>
+    
+    <h3>order: 특정 요소만 정렬 순서를 바꿔주는 속성</h3> <!--부모가 flex-->
+    <pre>
+        선택자 {
+            order: 숫자(기본값0)
+        }
+    </pre>
+    <div id="container" class="justify-content-test">
+        <div>FLEX1</div>
+        <div>FLEX2</div>
+        <div style="order: 1; background-color: lime;">FLEX3</div>
+        <div style="order: -1; background-color: yellow;">FLEX4</div>
+        <div>FLEX5</div>
+        <div>FLEX6</div>
+    </div>
+
+    <h3>flex-wrap : 요소들을 한 줄로 정렬할지 여러줄로 정렬할지 정하는 속성</h3>
+    <div id="container" class="flex-wrap-test">
+        <div>FLEX1</div>
+        <div>FLEX2</div>
+        <div>FLEX3</div>
+        <div>FLEX4</div>
+        <div>FLEX5</div>
+        <div>FLEX6</div>
+        <div>FLEX7</div>
+        <div>FLEX8</div>
+        <div>FLEX9</div>
+        <div>FLEX10</div>
+    </div>
+    
+    
+</body>
+</html>

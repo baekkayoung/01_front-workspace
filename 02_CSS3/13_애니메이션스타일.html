@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션관련스타일</title>
+    <style>
+        .anitest1:checked+div{
+            width: 200px; 
+            animation-name: ani;
+            animation-duration: 4s;
+            animation-direction: alternate; /*애니메이션을 부드럽게 보여줌*/
+            animation-iteration-count: infinite; /*무한반복/ 위랑 짝꿍*/
+        }
+
+        .anitest2:checked+div{
+            animation: ani2 5s infinite alternate; /*단축 속성*/
+        }
+
+        @keyframes ani {
+            from{
+                background-color: green;
+                border: 1px solid black;
+            }
+
+            to{
+                background-color: yellow;
+                border-radius: 50%;
+                transform:rotate(720deg);
+                border: 3px solid red;
+            }
+        }
+
+        @keyframes ani2 
+        {
+            0% {
+                border: 3px solid red;
+                background-color: thistle; 
+            }
+
+            30% {
+                transform: translate(100px, 100px);
+            }
+
+            50% {
+                background-color: blueviolet;
+                border-color: yellow;
+                transform: scale(1.5);
+            }
+
+            100% {
+                background-color: blue;
+                transform: rotate(360deg);
+                border: red;
+
+            }
+
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>애니메이션 관련 스타일</h1>
+    <h2>애니메이션</h2>
+    <p>
+        속성을 점차적으로 변화시켜 움직이는 효과를 내는 기법
+        트랜지션과 비교 했을 때 시작스타일과 종료스타일을 부드럽게 이어주는 기능은 같다
+        단, 애니메이션은 중간에 원하는 위치에 @keyframes를 이용하여 중간 스타일 지정 가능
+    </p>
+
+    <pre>
+        @keyframes 키프레임명 
+            선택자{
+                속성명:속성값;
+            }
+    </pre>
+
+    <input type="checkbox" class="anitest1">
+    <div class="anitest">기본 애니메이션 적용</div>
+    
+    <input type="checkbox" class="anitest2">
+    <div class="anitest2">추가 애니메이션 적용</div>
+</body>
+</html>

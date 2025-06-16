@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상클래스선택자1</title>
+    <style>
+        div {
+            width: 100px; height: 100px;
+            background-color: orange;
+            transition: 1s;
+        }
+
+        .div-hover:hover {
+            width: 300px;
+            background-color: royalblue;
+        }
+
+        .div-active:active{
+            width: 300px;
+            background-color: royalblue;
+        }
+
+        input:focus{
+            background-color: orange;
+        }
+
+        .div-focus:focus{
+            background-color: pink;/*div는 기본적으로 focus 되는 요소가 아님*/
+        }
+
+        .div-tapindex:focus{
+            background-color: royalblue;
+        }
+    </style>
+</head>
+<body>
+    <h3>가상 클래스 선택자1</h3>
+    <p>
+        -어떠한 행동을 했을 때 동작하는 개념을 선택하는 선택자 <br>
+        -종류: :hover, :active, :focus
+    </p>
+
+    <div class="box"></div> <br><br>
+    <input type="text">
+
+    <h4>hover 가상 선택자</h4>
+    <p>-마우스 커서가 올라가 있는 동안 선택</p>
+    <pre>
+        선택자: hover {
+            스타일속성:값;
+        }
+    </pre>
+
+    <div class="div-hover"></div>
+    
+    <br><hr>
+
+    <h4>active 가상 선택자</h4>
+    <p>
+        -마우스를 클릭하고 있는 동안 선택
+    </p>
+    <pre>
+        선택자:active {
+            스타일속성:값;
+        }
+    </pre>
+
+    <div class="div-active"></div>
+
+    <br><hr>
+
+    <h4>focus 가상 선택자</h4>
+    <p>
+        - 요소가 포커스 되면 선택 <br>
+        - 포커스 가능한 요소 : input, a, button, label 등..
+    </p>
+
+    <input type="text"/> <br><br>
+    <div class="div-focus"></div> 
+
+    <br><hr>
+
+    <h3>tabindex</h3>
+    <p>
+        - 기본적으로 이름에서도 알 수 있듯, Tap 키를 사용해 Focus할 수 있는 순서를 지정 가능<br>
+        - focus가 아닌 요소를 focus 가능한 요소로 만드는 속성 (예: div..)<br>
+    </p>
+    
+    <pre>
+    tabindex="-1" (-1 이외에 다른 값을 넣는 것은 논리적 흐름을 방해하기 때문에 권장사항은 아님)
+    </pre>
+
+    <div class="div-tapindex" tabindex="-1">
+        
+
+    </div>
+</body>
+</html>

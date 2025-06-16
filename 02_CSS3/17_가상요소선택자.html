@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상요소선택자</title>
+    <style>
+        div{
+            width: 100px; height: 100px; background-color: rosybrown;
+        }
+
+        .before-box::before{
+            content:"안녕하숑용"
+        }
+        
+        /*가상으로 만든건 인라인으로 만들어지기 때문에 
+            가로/세로 크기 지정하려면 블럭요소여야함*/
+        .after-box::after{
+            display: block;
+            content:"";
+            width: 30px;
+            height: 30px;
+            background-color: royalblue;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h3>가상 요소 선택자</h3>
+    <p>
+        - 가상의 요소를 만들어서 삽입하는 선택자 <br>
+        - 이때, 추가되는 요소는 인라인 요소로 만들어짐 <br>
+        - 종류 : ::before, ::after
+    </p>
+
+    <h4>::before</h4>
+    <p>
+        -선택자 요소의 내부 앞에 내용을 삽입
+    </p> 
+    <pre> <!--content는 비워놓더라도 필수임!!-->
+        선택자::before{
+            content:"추가하고자 하는 내용"
+        }
+    </pre>
+
+    <div class="before-box">
+        Content!
+    </div>
+
+    <br><hr>
+
+    <h4>::after</h4>
+    <p>
+        - 선택자 요소의 내부 뒤에 내용을 삽입
+    </p>
+
+    <pre>
+        선택자::after{
+            content:"추가하고자 하는 내용"
+        }
+    </pre>
+
+    <div class="after-box">
+        content!
+    </div>
+
+</body>  
+</html>
