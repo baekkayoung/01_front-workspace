@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+        .wrap>div{
+            width: 100%;
+        }
+
+        .wrap { height: 800px;
+                width: 1000px;
+                margin: auto;}
+
+        #header, #footer {height: 20%;}
+        #content {height: 60%;}
+
+        #header > div {
+            height: 100%;
+            float: left;}
+
+        #content > div {
+            height: 100%;
+            float: left;
+        }
+
+        #head_1 {width: 30%;}
+        #head_2 {width: 60%;}
+        #head_3 {width: 10%;}
+        
+        #content_1 {width: 20%;}
+        #content_2 {width: 60%;}
+        #content_3 {width: 20%;}
+        
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div id="header">
+            <div id="head_1"></div>
+            <div id="head_2"></div>
+            <div id="head_3"></div>
+        </div>
+            
+    
+        <div id="content">
+            <div id="content_1"></div>
+            <div id="content_2"></div>
+            <div id="content_3"></div>
+        </div>
+            
+        <div id="footer">
+
+        </div>
+            
+
+
+    </div>
+</body>
+</html>

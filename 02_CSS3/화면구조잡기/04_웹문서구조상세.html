@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹문서구조상세</title>
+    <style>
+        div {border: 1px solid red;
+                box-sizing: border-box;}
+
+        #wrap>div {width: 100%;}
+
+        #wrap {height: 800px; width: 1000px; margin: auto;}
+
+        #header, #footer {height: 20%;}
+        #navigator {height: 5%;}
+        #content {height: 55%;}
+        
+
+        #header>div {float: left;
+                    height: 100%;}
+
+        #h_1 {width: 20%;}
+        #h_2 {width: 65%;}
+        #h_3 {width: 15%;}
+
+        #content>div {float: left; height: 100%;}
+
+        #c_1 {width: 15%;}
+        #c_2 {width: 60%;}
+        #c_3 {width: 25%;}
+        
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div id="h_1"></div>
+            <div id="h_2"></div>
+            <div id="h_3"></div>
+        </div>
+
+        <div id="navigator">            
+        </div>
+
+        <div id="content">
+            <div id="c_1"></div>
+            <div id="c_2"></div>
+            <div id="c_3"></div>
+        </div>
+
+        <div id="footer">
+        </div>
+        
+    </div>
+    
+    
+</body>
+</html>
