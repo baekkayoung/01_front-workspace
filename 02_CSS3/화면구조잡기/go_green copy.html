@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    div, input {
+        border: 1px solid black;
+        box-sizing: border-box;
+    }
+
+    #wrap>div {width: 100%;}
+    #wrap {height: 800px; width: 1000px; margin: auto;}
+
+    #header {height: 10%;}
+    #navigator {height: 5%}
+    #content {height:60%;}
+    #footer{height: 25%;}
+
+    #header>div, #navi>div , #content>div {
+        float: left;
+        height: 100%;
+    }
+
+    #header_1 {width: 20%;}
+    #header_2 {width: 60%;}
+    #header_3 {width: 20%;}
+
+    #content_1 {width: 15%;}
+    #content_2 {width: 60%;}
+    #content_3 {width: 25%;}
+    
+
+    /*footer*/
+
+    #footer_image {
+        background-image: url("실습_v1/image/footer.JPG");
+        width: 100%; height: 100%;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+        background-position: center;
+    }
+
+    /*navi*/
+
+    
+    #navi>div{
+        float: left;
+        border: 1px solid green;
+        width: 25%;
+        height: 100%;
+        text-align: center;}
+
+    
+
+    #navi a {
+        border: 1px solid green;
+        text-decoration: none;
+        color: white;
+        background-color: green;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    #navi a:hover{
+        background-color: greenyellow;
+    }
+
+
+    /*헤더*/
+
+    #header_1{
+        background-image: url("실습_v1/image/logo.jpg");
+        background-repeat: no-repeat;
+        background-size: 60%;
+        background-position: center;
+
+    }
+    #header_2{
+        background-image: url("실습_v1/image/mainlogo.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+    }
+
+    /*컨텐츠_1*/
+
+    #content_1 {
+        background-image: url("실습_v1/image/left_img.jpg");
+        background-size: contain;
+        padding: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+    }
+
+    /*컨텐츠_2*/
+
+    #content_2 {
+        display: flex; 
+        flex-wrap: wrap;
+        padding: 15px;}
+
+
+    .caption {
+    text-align: center;
+    margin-top: 200px;;
+    color: black;
+    font-size: small;}
+
+        
+
+    #c_image1{
+        background-image: url("실습_v1/image/main_img1.jpg"); background-size: 95%;
+        background-repeat: no-repeat;
+        background-position: top;
+        width: 50%;
+        height: 50%;
+    }
+    #c_image2{
+        background-image: url("실습_v1/image/main_img2.jpg");background-size: 95%;
+        background-position: top;
+        background-repeat: no-repeat;
+        width: 50%;
+        height: 50%;
+
+    }
+    #c_image3 {
+        background-image: url("실습_v1/image/main_img3.jpg");background-size: 95%;
+        background-position: top;
+        background-repeat: no-repeat;
+        width: 50%;
+        height: 50%;
+
+    }
+    #c_image4 {
+        background-image: url("실습_v1/image/main_img4.jpg");background-size: 95%;
+        background-position: top;
+        background-repeat: no-repeat;
+        width: 50%;
+        height: 50%;
+
+    }
+
+
+
+    /*컨텐츠_3-1 로그인*/
+    #login_form{width: 100%; height: 20%;}
+    #login_form>*{width: 100%;}
+
+    #login_form_input {height: 70%;}
+    #login_input_etc {height: 30%; text-align: center;}
+
+    #login_form_input>* {
+        height: 100%; 
+        float: left;
+        display: flex;}
+
+    #Id, #Pwd {width: 40%;}
+    #btn {width: 100%; margin-top: 25%;
+        height: 60%;}
+
+    #login_input_etc>a {
+        text-decoration: none;
+        color: rgb(58, 58, 58);
+        margin: 10px;
+        
+        font-size: small;
+    }
+    /*컨텐츠_3-2*/
+    #program {
+        background-image: url("실습_v1/image/right_img.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        width: 100%;
+        height: 50%;
+        
+    }
+
+    /*컨텐츠_3-3*/
+    #chat {
+        background-image: url("실습_v1/image/me_chat.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        width: 100%;
+        height: 30%;
+       
+    }
+
+    
+    
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div id="header_1"></div>
+            <div id="header_2"></div>
+            <div id="header_3"></div>
+        </div>
+    
+
+
+
+
+
+        <div id="navigator">
+            <div id="navi">
+                <div id="navi_1"><a href="">Home</a>
+                </div>
+                <div id="navi_2"><a href="">Profile</a>
+
+                </div>
+                <div id="navi_3"><a href="">Board</a>
+
+                </div>
+                <div id="navi_4"><a href="">Contact</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div id="content">
+            <div id="content_1"></div>
+
+            <div id="content_2">
+                <div id="c_image1" class="image-box">
+                    <div class="caption">나무를 심는 사람들</div>
+                </div>
+
+                <div id="c_image2" class="image-box">
+                   <div class="caption">아이들에게 녹색미래를...</div>
+                </div>
+
+                <div id="c_image3" class="image-box">
+                    <div class="caption">설악산을 살리는 길</div>
+                </div>
+
+                <div id="c_image4" class="image-box">
+                    <div class="caption">사라지는 북극곰들</div>
+                </div>
+            </div>
+
+            <div id="content_3">
+                
+                
+                <div id="login_form">
+                    <form action="" id="login_form_input">
+                        <div id="login_input_Id_Pwd">
+                            <input type="text" name="userId" id="Id" placeholder="ID를 입력하세요">
+                            <input type="password" name="userPwd" id="Pwd" placeholder="PW를 입력하세요">
+                        
+                        <div id="login_input_btn">
+                            <input type="submit" name="btn" id="btn" value="로그인">
+                        </div>
+                        </div>
+                       
+
+                    </form>
+
+                    <div id="login_input_etc">
+                        <a href="">회원가입</a>
+                        <a href="">ID/PW 찾기</a>
+                    </div>
+                </div>
+
+                <div id="program"></div>
+                <div id="chat"></div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+        <div id="footer">
+            <div id="footer_image">
+
+            </div>
+            
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+</body>
+</html>

@@ -8,16 +8,15 @@
         div, input{border: 1px solid red;
                 box-sizing: border-box;}
 
-        #wrap>div {width: 100%;}
-
-        #wrap {height: 800px; width: 1000px; margin: auto;}
+        #wrap>div {width: 100%;} /*헤더,네비,컨텐츠,푸터 가로*/
+        #wrap {height: 800px; width: 1000px; margin: auto;} /*전체표 크기*/
 
         #header, #footer {height: 20%;}
         #navigator {height: 5%;}
         #content {height: 55%;}
         
 
-        #header>div, #content>div
+        #header>div, #content>div /*float는 칸이 여러개인 걸 가로로 주르륵*/
             {float: left;
             height: 100%;}
 
@@ -167,30 +166,32 @@
 
         <div id="navigator">
             <ul id="navi"> <!--(li>a)*5-->
-            <li><a href="">Java</a></li>
-            <li><a href="">Oracle</a></li>
-            <li><a href="">Front-End</a>
-                <ul>
-                    <li><a href="">HTML</a></li>
-                    <li><a href="">CSS</a></li>
-                    <li><a href="">JavaScript</a></li>
-                    <li><a href="">jQuery</a></li>
-                </ul>
-            </li>
-            <li><a href="">Server</a>
-                <ul>
-                    <li><a href="">JDBC</a></li>
-                    <li><a href="">Servlet</a></li>
-                    <li><a href="">JSP</a></li>
-                    <li><a href="">AJAX</a></li>
-                </ul>
-            </li>
-            <li><a href="">Framework</a>
-                <ul>
-                    <li><a href="">myBatis</a></li>
-                    <li><a href="">Spring</a></li>
-                </ul>
-            </li>
+                <li><a href="">Java</a></li>
+                <li><a href="">Oracle</a></li>
+                <li><a href="">Front-End</a>
+                    <ul>
+                        <li><a href="">HTML</a></li>
+                        <li><a href="">CSS</a></li>
+                        <li><a href="">JavaScript</a></li>
+                        <li><a href="">jQuery</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="">Server</a>
+                    <ul>
+                        <li><a href="">JDBC</a></li>
+                        <li><a href="">Servlet</a></li>
+                        <li><a href="">JSP</a></li>
+                        <li><a href="">AJAX</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="">Framework</a>
+                    <ul>
+                        <li><a href="">myBatis</a></li>
+                        <li><a href="">Spring</a></li>
+                    </ul>
+                </li>
 
         </ul> 
                        
