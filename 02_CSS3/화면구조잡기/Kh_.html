@@ -27,7 +27,8 @@
 
     /*헤더*/
 
-    #header{border: 1px solid gray;}
+    #header{border: 1px solid gray;
+            margin: 5px 0;}
     #header_1 {
         background-image: url("실습_v2/image/logo.PNG");
         background-repeat: no-repeat;
@@ -49,7 +50,14 @@
     }
     #search_form>div {height: 100%; float: left;}
     #search_text{width: 80%;}
-    #search_btn{width:20%;}
+    
+    #search_btn{width: 20%;}
+
+    #search_btn_icon {background-image: url("실습_v2/image/search.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;}
+
 
     #search_form input{width: 100%; height: 100%;}
 
@@ -80,12 +88,13 @@
     /*콘텐츠1*/
 
     #content_1 {width: 70%;}
-    #content_2 {width: 30%;}
+    #content_2 {width: 29.5%; }
 
     #banner {
+        margin: 5px 0;
         border: 1px solid gray;
         height:30%;
-        background-image: url("../화면구조잡기/실습_v2/image/banner.PNG");
+        background-image: url("/실습_v2/image/banner.PNG");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;}
@@ -94,7 +103,7 @@
             padding-left: 15px;
             border: 1px solid gray ;
             height: 5%;
-            margin: 0 px;
+            margin: 5px 0;
             color: rgb(58, 58, 58);
             font-size: smaller;}
     #car {height: 65%; border: 1px solid gray;}
@@ -116,7 +125,8 @@
     /*로그인*/
 
     #login_form{width: 100%; height: 30%;
-                border: 1px solid gray;}
+                border: 1px solid gray;
+                margin: 5px 5px;}
     #login_form>*{width: 100%;}
 
     #login_form_input{height: 80%;}
@@ -147,14 +157,14 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        margin: 2px 5px;}
+        margin: 26px 0px 0px 0px;}
 
 
 
 
     /*푸터*/
 
-    #footer {border: 1px solid gray;}
+    #footer {border: 1px solid gray; margin: 20px 0;}
     #footer>div {width: 100%;}
     #f1 {height: 20%;}
     #f2 {height: 80%;}
@@ -208,9 +218,8 @@
                     </div>
 
                     <div id="search_btn">
-                        <button type="submit">
-                        <img src="../화면구조잡기/실습_v2/image/search.png" alt="Submit" >
-                        </button>
+                        <input type="submit" id="search_btn_icon" value="">
+
                     </div>
 
                 </form>
@@ -288,7 +297,7 @@
                         <a href="">회원가입</a>
                     </div>
                     
-                    <div id="shopping" style="height: 225%;">
+                    <div id="shopping" style="height: 225%;" >
                     </div>
                 </div>
 

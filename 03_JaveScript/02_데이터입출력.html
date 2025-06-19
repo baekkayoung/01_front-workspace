@@ -24,14 +24,14 @@
                 하나씩 만들어지는 객체
                 브라우저 창 안에 존재하는 모든 요소들의 최상위 객체 (생략가능)
 
-        * document : 문서 웹 문서 마가 하나씩 만들어지는 객체 (생략불가능)
+        * document : 문서 웹 문서 마다 하나씩 만들어지는 객체 (생략불가능)
                     (html 문서 내에 있는 모든 정보들을 가지고 있음)
     -->
     <h2>1. 데이터를 출력하는 구문</h2>
     <!--[]: 생략가능-->
     <p>
-        1) [window].alret("알람창에 출력할 문구"); <br>
-        2) [.window].console.log("콘솔창에 출력할 문구"); <br>
+        1) [window.]alret("알람창에 출력할 문구"); <br>
+        2) [window.]console.log("콘솔창에 출력할 문구"); <br>
         3) document.write("화면상에 출력할 문구"); <br>
         4) 선택한요소.innerHTML | innerTEXT = "요소에 출력할 문구";
 
@@ -44,18 +44,19 @@
         function documentWrite() {
             //document.write("안녕하세요");
             //위에까지면 누르면 화면에 안녕하세요만. 12f로 눌러서 보면 다 사라지고 바디에 저거만
-         //   document.write("<b>안녕하세요</b><br><h2>반가워</h2>");
+            //document.write("<b>안녕하세요</b><br><h2>반가워</h2>");
             //출력할 문구에 html 태그가 있을 경우 해석해서 시각적인 요소로 보여짐
 
             //자료형 변수명 / += a에다가 계속 더한다 / 
-            var a = "<table border='1'>"
-                a += "<tr>"
+            var a = "<table border='1'>" //테이블 시작,변수 a에 저장
+                a += "<tr>" // += :이어서 새 문자열 <tr>을 붙인다 
                 a += "<td>1</td>"
                 a += "<td>2</td>"
-                a += "<tr>"
+                a += "</tr>"
                 a += "</table>"
             
             document.write(a);
+            //완성된 테이블을 웹 페이지에 출력
 
             }
     </script>
@@ -94,13 +95,206 @@
 
             divEl.style.backgroundColor = "yellow";
             //속성에 접근, 옐로우를, 대입한다
-
-            divEl.style.color = "red";
+            //divEl.style.color = "red";
 
         }
 
     </script>
     
+
+    <hr>
+
+    <h2>2. 데이터를 입력 받는 구문(변수에 기록 가능)</h2>
+    <p> <!--변수 박스에 기록-->
+        1) 변수 = [window].confirm("질문내용"); <br>
+        2) 변수 = [window].prompt("질문내용");  <br>
+        3) 변수 = 선택한요소.속성명(id, className, innerHTML, ...) <br>
+        4) 변수 = 선택한input요소.value;
+    </p>
+
+
+    <h3>1) [window].fontirm("질문내용")</h3>
+    
+    <p>
+        confirm 호출시 "질문내용"과 "확인/취소" 버튼이 존재하는 알람창 발생 <br>
+        확인버튼 클릭시 true, 취소버튼 클릭시 false를 반환
+    </p>
+    <!--소괄호 제발 무조건~~~~~~~-->
+    <button onclick="testConfirm()">클릭</button>
+    <div id="area2"></div>
+
+    <script>
+        function testConfirm(){
+            var result = confirm("졸리면 확인, 아니면 취소를 누르세요");
+            // 리절트 박스에 컨펌 함수 실행되면서 트루 저장
+    //console.log(result); // 리절트 박스 안에 선택한 값 볼 수 있음
+
+            var divEl = document.getElementById("area2"); 
+
+//리절트의 값이 트루와 같다면,중괄호 안을 실행히라. 그게 아니면 else
+            if(result == true){
+                divEl.innerHTML = "<h3>정신들 체리세요</h3>"
+            }else {
+                divEl.innerHTML = "<h3>굳~</h3>"
+
+
+            }
+            
+        }
+
+
+    </script>
+
+    <br>
+    <h3>2) [window].propmt("질문내용");</h3>
+    <p>
+        propmt 호출시 "질문내용"과 입력할 수 있는 "텍스트 상자"와 "확인/취소" 버튼이 보여지는 알람창 발생<br>
+        확인 버튼 클릭시 테긋트 상자에 입력되어 있는 값이 문자열로 반환(아무리 숫자가 써있떠라도 문자열로)<br>
+        취소 버튼 클릭시 null을 반환 (글자 입력을 했어도 취소를 누르면 무조건 null)
+    </p>
+
+    <button onclick="testPrompt1()">클릭</button>
+    <div id="area3"></div>
+
+    <script>
+        function testPrompt1(){
+            var name = prompt("당신의 이름은 무엇 입니까?")
+            var age = prompt("당신의 나이는 몇살입니까?");
+
+            console.log(name);
+            console.log(age);
+
+    //console.log(1); // 숫자랑 문자열숫자는 색이 약간 다름. 숫자라도 숫자가 아니고 문자열로 온거임
+            //취소 누르면 넘어가지만 null로.
+       
+            //ared3~dl divEl에 들어감
+            var divEl = document.getElementById("area3");
+            divEl.innerHTML = "<b>앗, 당신이 바로" + age 
+                            + "살" + name + "님이군요... 반가워요 ㅎㅎ</b>"
+        }
+    </script>
+
+    <br>
+
+
+
+
+
+
+
+    <button onclick="testPrompt2()">숫자입력</button>
+
+    <ul id="area4"></ul>
+    </ul>
+
+    <script>
+        function testPrompt2(){
+            var num = prompt("숫자만을 입력하세요") //넘 이라는 이름의 박스에 "" 내용 대입
+            // num의 개수만큼 반복문 돌려서 li 만들어주기
+            var str = "";
+            for(var i=1; i<=num; i++){
+                str += "<li>목록" + i + "</li>"
+            } //반복문 끝나면 나오고.
+
+            var ulEl = document.getElementById("area4");
+            ulEl.innerHTML = str;
+
+
+        }
+
+
+    </script>
+
+
+
+
+
+
+
+
+    <br>
+
+
+
+
+    <h3>3) 선택한input요소.vlaue</h3>
+    아이디 : <input type="text" id="userId"> <br>
+    비밀번호 : <input type="password" id="userPwd"> <br>
+
+    <button onclick="testInput()">클릭</button>
+    <br>
+
+    <input type="text" id="area5"> <!-- input 은 value 속성에 갇힘-->
+
+    <script>
+
+        function testInput() {
+            var input1 = document.getElementById("userId")
+            var input2 = document.getElementById("userPwd")
+            //인풋1이가진디렉토리다볼거임
+            //console.dir(input1);
+
+
+            //둘다 보는 방법 
+            //console.log(input1.value)
+            //console.log(input2.value)
+            
+            //클릭 버튼 누르면 input1과 input2의 값이 출력되도록
+
+            var input3 = document.getElementById("area5");
+            input3.value = input1.value + "," + input2.value;
+
+            // 클릭 버튼을 누르면 각각의 아이디랑 비밀번호 인풋창 초기화 하고 싶다면?
+
+            input1.value = "";
+            input2.value = "";
+
+        }
+
+    </script>
+
+    <hr>
+    <h2>자바스크립트 반복문</h2>
+    <button onclick="loop()"> 반복문 테스트</button>
+
+    <pre>
+    * 반복문의 표현법(for문) : 특정 횟수나 범위만큼 반복하는 문
+    for(초기식;조건식;증감식){
+        -초기식 : 변수의 선언
+        -조건식 : 반복을 수행할지 안할지 조건을 판단하는 구문
+        -증감식 : 변수 증가하거나 감소시키는 구문
+
+        => 위의 3개의 값을 가지고 반복 횟수를 결정
+    }
+    </pre>
+    <script>
+        function loop(){
+
+            //console.log("안녕하세요")console.log("안녕하세요")console.log("안녕하세요")console.log("안녕하세요")console.log("안녕하세요")이렇게 5번 쓰는 방법도 있지만...
+            for(var i = 1; i <= 5; i++){
+                //console.log("안녕하세요"); 5번
+                //i는 1이니까 1부터
+                //console.log(i*2);
+                console.log(i);
+            }
+
+
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

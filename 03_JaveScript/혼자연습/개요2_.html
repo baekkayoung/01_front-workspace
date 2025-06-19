@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <button onclick="documentWrite()">화면에 출력</button>
+<script>
+    function documentWrite() {
+        //document.write("안녕하세요"); -> f12눌러서 보면 사라지고 body에 저거만
+        //document.write("<b>안녕하세요</b><br><h2>반가워</h2>"); -> 태그까지 다 보임
+
+        var a = "<table border='1'>"
+            a += "<tr>"
+            a += "<td>1</td>"
+            a += "<td>2</td>"
+            a += "</tr>"
+            a += "</table>"
+
+            document.write(a);
+
+
+
+    }
+
+</script>
+<hr><hr><hr><hr>
+<div class="area" id="area1">
+    자바 스크립트에서 어떤 요소(element)안의 값(content)을 가지고 온다거나
+        변경하고자 할 때 <b>innerHTML, innerTEXT</b> 라는 속성에 접근
+
+</div>
+
+<button onclick="tgvalue()">확인</button>
+<script>
+    function tgvalue(){
+        var divEl = document.getElementById("area1");
+
+        con
+
+
+
+    }
+
+
+
+</script>
+
+
+
+
+
+
+    
+</body>
+</html>

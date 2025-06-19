@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="area" id="area1"> 
+        자바 스크립트에서 어떤 요소(element)안의 값(content)을 가지고 온다거나
+        변경하고자 할 때 <b>innerHTML, innerTEXT</b> 라는 속성에 접근
+    </div>
+    <button onclick="tagValue()">확인</button>
+    <script>
+        function tagValue(){
+           
+            var divEl = document.getElementById("area1"); 
+
+            
+            
+            divEl.innerText = "<b>innerText로 속성값 변경함 ㅎㅎ</b>"
+
+            divEl.style.backgroundColor = "yellow";
+           
+
+        }
+
+    </script>
+
+
+    
+</body>
+</html>

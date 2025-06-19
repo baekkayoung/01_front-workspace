@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>inline 방식</h1>
+
+태그 내에 작성하는 방식 <br>
+
+1. 알림장 출력 :
+
+<button id="dangerous">주의!</button>
+<script>
+var danger = document.getElementById("dangerous"); 
+/* 해석 : 웹페이지(document) 안에서
+이름표(id)가 'dangerous'인 버튼을 찾아줘!
+그리고 그걸 ‘danger’라는 상자에 담아줘!”*/
+danger.onclick = function(){
+        window.alert("조심!!")
+/* 해석 사용자가 이 버튼을 클릭했을 때
+화면에 '조심!!' 이라는 알림창을 띄워줘*/
+}
+</script>
+
+<button id="btn">알람창 출력</button> :익명함수
+<script>
+var btn = document.getElementById("btn"); 
+btn.onclick = function(){
+            window.alert("버튼 클릭!!")}
+</script>
+
+
+
+
+
+<br><br><br>
+
+
+<button onclick="btnClick()">콘솔에 생성</button> :기명함수
+
+<script>
+    function btnClick() {
+            console.log("백가영");
+
+        }        
+
+</script>
+
+
+
+<button id="check">확인</button>
+<script>
+var ch = document.getElementById("check")
+ch.onclick=function(){
+    window.alert("확인되었습니다!")
+}
+
+
+</script>
+
+
+<br><br><br>
+
+콘솔 버튼 만들기 연습
+
+
+<button onclick="click()">콘솔에 추가</button>
+ <script>
+    function click() {
+        console.log("배고파?")
+
+    }
+
+ </script>
+
+<button onclick="btnClick()">콘솔에 생성</button> :기명함수
+
+<script>
+    function btnClick() {
+            console.log("백가영");
+
+        }        
+
+</script>
+</body>
+</html>
