@@ -77,9 +77,26 @@
             var divEl = document.getElementById("area1"); // div 요소 객체 
 
             console.log(divEl);
-            console.dir(divEl);
+            console.dir(divEl); //console.dir: 해당 디렉토리 구조 보고자 할 때 사용(속성들에 대한 정보)
 
-            
+            //선택된 요소의 속성에 접근(.을 통해서 접근)
+            console.log(divEl.id) // id: 해당 요소의 아이디 속성
+            console.log(divEl.className); //Classname: 해당 요소의 클래스 속성
+
+            console.log(divEl.innerHTML); //innerHTML : 요소의 content 영역안의 html 태그까지 싹 다 포함해서 보여줌
+            console.log(divEl.innerText); //innerText : 요소의 content 영역안의 텍스트만 포함 (태그x)
+
+            //해당 요소의 속성값 변경 : 속성에 접근 후 대입을 통해 변경
+        //divEl.innerHTML = "<b>innerHTML로 속성값을 변경함 ㅎㅎ</b>"
+            //1. divel의이너에쳄티엘에 2.접근해서 문자를 3.대입하라
+            //버튼을 누르기 전에는 원래. 버튼누르면 대입한 변경내용으로 변경
+            divEl.innerText = "<b>innerText로 속성값 변경함 ㅎㅎ</b>"
+
+            divEl.style.backgroundColor = "yellow";
+            //속성에 접근, 옐로우를, 대입한다
+
+            divEl.style.color = "red";
+
         }
 
     </script>
