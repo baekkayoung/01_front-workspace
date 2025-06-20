@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {border: 1px solid black; 
+            height: 30px; width: 55px;}
+        .box {
+            border: 1px solid black;
+            height: 100px; width: 100px;
+            background-color: black;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>1. 색상 선택 후 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h1>
+    <!--1. 컬러피커-->
+    <div class="box" id="colorBox"></div>  <br>
+    <input type="color" id="colorPicker">
+    
+    <button onclick="colorChange()">변경</button><br>
+    <script>
+        function colorChange(){
+            var colorBox = document.getElementById("colorBox")
+            var colorInput = document.getElementById("colorPicker")
+
+            colorBox.style.backgroundColor = colorInput.value;
+        }
+
+    </script>
+    
+<hr>
+    <h1>2. 버튼에 따라 크기 조절이 가능하게 만들기</h1>
+    <!--2. 이미지 크기 조절-->
+    
+    <div class="box" id="boxSize"></div><br>
+
+    <button onclick="dhtlq()">50x50</button>
+    <button onclick="qor()">원본(100x100)</button>
+    <button onclick="dlqor()">200x200</button>
+
+    <script>
+        function dhtlq(){
+                var dhtlq = document.getElementById("boxSize")
+
+                dhtlq.style.width = "50px"
+                dhtlq.style.height = "50px"
+        }
+
+        function qor(){
+                var qor = document.getElementById("boxSize")
+ 
+                qor.style.width = "100px"
+                qor.style.height = "100px"
+            }   
+
+        function dlqor(){
+                var dlqor = document.getElementById("boxSize")
+
+                dlqor.style.width = "200px"
+                dlqor.style.height = "200px"
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

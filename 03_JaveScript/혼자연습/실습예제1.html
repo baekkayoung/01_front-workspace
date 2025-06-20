@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {width: 70px; height: 100px;}
+
+
+    </style>
+</head>
+<body>
+    <!--1번문제-->
+    <h1>행 열 각각 입력받아 테이블 만들기</h1>
+    
+    <button onclick="htmlTable()">테이블 생성</button>
+    <div id="htmlTable"></div>
+
+    <script>
+        function htmlTable(){
+
+            var rows = prompt("몇 행을 추가하시겠습니까?");
+            var cols = prompt("몇 열을 추가하시겠습니까?");
+            
+            var table = document.getElementById("htmlTable");
+            var table = "<table border='1'>"
+
+            for (var i=0; i < rows; i++){
+                table +="<tr>"
+                    for (var j=0; j<cols; j++) {
+                        table += "<td>" + "</td>";
+                    }
+                    table += "</tr>";
+            }
+            table += "</table>";
+            
+            document.getElementById("htmlTable").innerHTML = table;
+
+            }
+
+
+
+
+
+
+
+        
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+    <!--2번문제-->
+     <h1>행 열을 각각 입력 받아서 새화면 출력하기</h1>
+
+    
+
+    <button onclick="newDocumentTable()">테이블 새화면 생성</button>
+
+    <script>
+        function newDocumentTable(){
+
+            var rows = prompt("몇 행을 추가하시겠습니까?");
+            var cols = prompt("몇 열을 추가하시겠습니까?");
+
+
+            var table = "<table border='1'>"
+            var count = 1;
+
+            for (var i=0 ; i< rows; i++){
+                table += "<tr>"
+                    for (var j=0; j<cols; j++) {
+                        table += "<td>" + count + "</td>";
+                        count++;
+                    }
+                    table += "</tr>";
+            }
+            table += "</table>";
+
+        document.write(table); }
+
+
+            //    var a = "<table border='1'>"
+            //    a += "<tr>"
+            //    a += "<td>1</td>"
+            //    a += "<td>2</td>"
+            //    a += "</tr>"
+            //    a += "<tr>"
+            //    a += "<td>3</td>"
+            //    a += "<td>4</td>"
+            //    a += "</tr>"
+            //    a += "<tr>"
+            //    a += "<td>5</td>"
+            //    a += "<td>6</td>"
+            //    a += "</tr>"
+            //    a += "</table>"
+
+
+    </script>
+
+
+
+</body>
+</html>

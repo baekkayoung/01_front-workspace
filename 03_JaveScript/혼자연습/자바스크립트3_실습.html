@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+구매자 : <input type="text" id="buyer" name="buyer"  placeholder="구매자의 이름을 입력하세요."><br><br>
+상품명 : <input type="text" id="goods" name="goods"  placeholder="구매 상품명을 입력하세요."><br><br>
+가격 : <input type="text" id="price" name="price"  placeholder="구매 가격을 입력하세요."><br><br>
+
+<button onclick="testInput()">입력값 출력하기</button>
+<br><br>
+
+<input type="text" id="textArea" style="background-color: antiquewhite;">
+<br>
+
+
+
+<script>
+    function testInput(){
+        var input1 = document.getElementsByTagName("input");
+        var input2 = document.getElementById("goods");
+        var input3 = document.getElementsByName("price");
+    }
+
+    
+    console.log(input2.value)
+        var input4 = document.getElementById("area")
+
+        var textArea = document.getElementById("textArea");
+        input4.value = buyer.value + "<br>" + name.value + "<br>" + price.value
+
+
+
+    
+
+
+
+</script>
+</body>
+</html>

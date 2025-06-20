@@ -9,7 +9,6 @@
             border: 1px solid black;
             width: 300px;
             height: 100px;
-
         }
 
 
@@ -181,15 +180,15 @@
 
 
 
-
     <button onclick="testPrompt2()">숫자입력</button>
 
     <ul id="area4"></ul>
-    </ul>
+
 
     <script>
         function testPrompt2(){
-            var num = prompt("숫자만을 입력하세요") //넘 이라는 이름의 박스에 "" 내용 대입
+            var num = prompt("숫자만을 입력하세요")
+            //넘 이라는 이름의 박스에 "" 내용 대입
             // num의 개수만큼 반복문 돌려서 li 만들어주기
             var str = ""; //초기화를 해줘야 함. 누적시키니까
             for(var i=1; i<=num; i++){ //index
