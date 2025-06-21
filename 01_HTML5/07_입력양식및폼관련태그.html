@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>입력양식 및 폼관련 태그</title>
+    
+
 </head>
 <body>
+
     
     <h1>입력 양식 관련 태그</h1>
 
@@ -28,10 +31,11 @@
         form action="" method="" <br><br>
         * action 속성 : 해당 form에 사용자가 입력한 값을 전달하면서 요청할 서버의 경로 제시<br>
         * method 속성 : 요청 전송 방식을 지정하는 속성 (get(기본값)/post) <br>
-        > get 방식 : 요청시 사용자가 입력한 값들이 url에 노출되는 방식<br>
-        > post 방식 : 요청시 사용자가 입력한 값들이 url에 노출되지 않는 방식<br>
+            > get 방식 : 요청시 사용자가 입력한 값들이 url에 노출되는 방식<br>
+            > post 방식 : 요청시 사용자가 입력한 값들이 url에 노출되지 않는 방식<br>
 
-        form 내에 submit 버튼클릭시 action 지정한 서버로 사용자가 입력한 값들이 넘어가면서 요청이 됨(사용자가 입력한 값들은 항상 key=value 세트로 전달
+        form 내에 submit 버튼클릭시 action 지정한 서버로 사용자가 입력한 값들이 넘어가면서 요청이 됨
+        (사용자가 입력한 값들은 항상 key=value 세트로 전달)
     </p>
 
     <form action="search.do" method="post"> <!-- 메소드 안 적으면 자동으로 get 방식임-->
@@ -75,7 +79,7 @@
             -생략하거나 잘못쓰면 자동으로 type="text"가 된다. <!-- text99라고 작성하더라도 -->
         </p>
 
-        아이디 : <input type="text" name="userId" placeholder="아이디를 입력해주세요" maxlength="12"><br>
+        아이디 : <input type="text" name="userId" placeholder="아이디를 입력해주세요" maxlength="7"><br>
 
         <br>
 
@@ -85,7 +89,7 @@
         </p>
 
         비밀번호 : 
-        <input type="password" name="userPwd" placeholder="영문, 숫자, 특수문자 8~15" maxlength="15">
+        <input type="password" name="userPwd" placeholder="영문, 숫자, 특수문자 8~15" maxlength="9">
 
     <h3>type="search | url | email  | phone"</h3>
     텍스트 상자와 유사하지만 각각의 정보에 맞게 세분화된 기능 제공
@@ -119,10 +123,15 @@
     <form action="test.do"> <!--액션 데이터를 넘길 서버의 주소-->
         <fieldset>
             <legend>글작성</legend>
-            제목 : <input type="text" name="title" size="30"><br>
-            내용 : <textarea name="content" placeholder="내용을 입력해주세요" cols="35" rows="10" style="resize:none;">
+            제목 : 
+            <input type="text" name="title" size="30"><br>
+
+            내용 : 
+            <textarea name="content" placeholder="내용을 입력해주세요" 
+            cols="35" rows="10" style="resize: none;">
             </textarea>
-            <br><br>
+
+            <br>
 
              <input type="submit" value="작성하기">
         </fieldset>
@@ -142,7 +151,8 @@
             - 스핀박스가 표시 됨(스핀박스 : 위/아래 화살표 버튼)
         </p>
 
-        수량 : <input type="number" name="amount" min="0" max="20" step="5" value="0"> <!--step 태그 : 배수만큼 올라감/ value 태그: 적어두는 대로 -->
+        수량 : <input type="number" name="amount" min="0" max="20" step="5" value="0"> 
+        <!--step 태그 : 배수만큼 올라감/ value 태그: 적어두는 대로 -->
         <hr>
 
         <h3>type="range"</h3>
@@ -151,7 +161,7 @@
             -슬라이드바를 통해 숫자 지정 가능
         </p>
 
-        점수 : <input type="range" name="score" min="0" max="100" step="20">
+        점수 : <input type="range" name="score" min="0" max="100" step="20" value="70">
         <br>
 
         <input type="submit">
@@ -196,7 +206,8 @@
 
         <p>
             -제시한 여러개의 값들 중에서 오로지 한 개만 선택해야 될 때 <br>
-            (name 속성 값이 똑같은 것들 끼리 하나의 그룹으로 지어짐) <br>           -제출시 현재 선택된(checked) 라디오 버튼의 value값이 넘어감
+            (name 속성 값이 똑같은 것들 끼리 하나의 그룹으로 지어짐) <br>           
+            -제출시 현재 선택된(checked) 라디오 버튼의 value값이 넘어감
         </p>
         
         <!-- name 값을 동일하게 설정하지 않으면 죄다 눌리게 됨 / 푸는 건 없음
@@ -210,7 +221,7 @@
         <input type="radio" name="gender" value="M" id="radioM"> 
         <label for="radioM">남자</label>
 
-        <input type="radio" name="gender" value="F" id="radioF"> 
+        <input type="radio" name="gender" value="F" id="radioF" checked> 
         <label for="radioF">여자</label>
 
 
@@ -237,6 +248,8 @@
 
 
     </form>
+
+    
 
     <hr>
 
@@ -284,9 +297,9 @@
         <p>
             -사용자에게 직접 키보드로 값을 입력받는 게 아니라<br>
              내가 제시한 여러개의 옵션(목록)들 중에서 선택할 수 있게끔<br>
-            -제출시 현재 선택된(selceted) option의 값이 넘어감
-            -각각의 option에 value값을 명시하지 않았을 경우 content 영역의 값이 넘어감
-            -value 값을 명시했을 경우 value 값이 넘어감
+            -제출시 현재 선택된(selceted) option의 값이 넘어감<br>
+            -각각의 option에 value값을 명시하지 않았을 경우 content 영역의 값이 넘어감<br>
+            -value 값을 명시했을 경우 value 값이 넘어감<br>
         </p>
 
         <form action="test.do">
@@ -300,7 +313,7 @@
                 <option value="" selected>선택안함</option> <!-- 속성명 = 속성값 -->
             </select>
             
-            <input type="submit">
+            <input type="submit">   
 
         </form>
 
