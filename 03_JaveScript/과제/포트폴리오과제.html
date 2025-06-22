@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>포트폴리오</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+            * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: whitesmoke;
+        color: rgb(78, 62, 62);
+        line-height: 1.6;
+        padding: 20px;
+        }
+
+        header {
+        text-align: center;
+        background-color: ghostwhite;
+        color:gray;
+        padding: 30px 10px;
+        border-radius: 40px;
+        }
+
+        header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        }
+
+        header .contact span {
+        display: inline-block;
+        margin: 5px 10px;
+        }
+
+        main {
+        margin: 30px auto;
+        max-width: 900px;
+        background: white;
+        padding: 30px;
+        border-radius: 40px;
+
+        }
+
+        section {
+        margin-bottom: 40px;
+        margin-left: 10px;
+        }
+
+        h2 {
+        margin-bottom: 15px;
+        color: rgb(81, 75, 75);
+        background-color: rgba(0,0,0,0.05)
+        }
+
+        .skill-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        }
+
+        .skill-box span {
+        background-color: #bac2dd;
+        color: #4a4946;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: bold;
+        border: 1px solid #a2a4ad;
+        }
+        
+        .projects ul {
+        padding-left: 30px;
+        }
+
+        .projects a {
+         color: #727b98;
+        text-decoration: none;
+        
+        }
+
+        .projects a:hover {
+        text-decoration: underline;
+        }
+
+        footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 15px;
+        font-size: 0.9rem;
+        background-color: #e5e7eb;
+        border-radius: 8px;
+        }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>백가영</h1><br>
+    <div style="border: 1px solid black; 
+      border-radius: 50%; overflow: hidden; width: 70px; height: 70px; margin: auto;" >
+      <img src="profilepic.png" alt="프로필 사진입니다" width="60px" height="60px"></div>
+      
+    </div>
+    
+    <br>
+    <p>웹 개발자</p>
+    <div class="contact">
+      <div>📧 baekkayoung@naver.com</div>
+      <div>📱 010 - 2289 - 4895</div>
+      <div>🏠 인천광역시 연수구</div>
+    </div>
+  </header>
+
+
+
+
+  <main>
+    <section class="intro">
+      <h2>자기소개</h2>
+      <br>
+      <p>안녕하세요! 사용자 중심 UI/UX를 지향하는 프론트엔드 개발자 백가영입니다.</p>
+    </section>
+
+    <hr>
+    <br><br>
+
+    <section class="skill">
+      <h2>기술</h2>
+      <div class="skill-box">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Java</span>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2>프로젝트</h2>
+      <ul id="project-list">
+        <li><a href="https://github.com/baekkayoung/" target="_blank">Github</a></li>
+        <li><a href="https://notion.com/baekkayoung/" target="_blank">Notion</a></li>
+      </ul>
+    </section>
+
+    <section class="education">
+      <h2>학력</h2>
+      <p>인명여자고등학교 졸업 (2014 ~ 2017)</p>
+      <p>부천대학교 졸업 (2017 ~ 2021)</p>
+    </section>
+  </main>
+
+
+  <footer>
+    <p>&copy; 2025 백가영. 모든 권리 보유.</p>
+  </footer>
+
+
+</body>
+
+</html>

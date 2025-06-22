@@ -59,7 +59,7 @@ div[class*=i]{background-color: blueviolet; color: red}
 
 /*5. 상태 선택자 -------------------------------------------------------------------------------*/
 input[type=checkbox]:checked {width: 20px; height: 20px;}/*얘는 박스선택*/
-input[type=checkbox]:checked+label{font-size: 20px;} /*다음으로! 폰트*/
+input[type=checkbox]:checked+label{font-size: 20px; color: red;} /*다음으로! 폰트*/
 
 input[name^=user]:focus{background-color: pink;}
 

@@ -29,13 +29,13 @@
 
         
         #fixed-area{
-            width: 100px; height: 100px; background-color: red;
-            position: fixed; 올라가기 버튼처럼 고정되는
+            width: 100px; height: 100px; background-color: blue;
+            position: fixed; 올라가기 버튼 처럼 고정되는
         }
 
 
         .z-test{
-            border: 1px solid black;
+            border: 1px solid blue;
             width: 150px; height: 100px;
             position: absolute; /*내가 원하는 위치에 위치를 부여하기 위함*/
         }
@@ -86,7 +86,7 @@
     <hr>
 
     <h3>z-index : 요소들을 순서대로 위로 쌓는 속성</h3><!--숫자가 클 수록 앞으로 -->
-    <div class="outer">
+    <div class="outer" style="border: 1px solid black; ">
         <div class="z-test" id="z1">요소1</div>
         <div class="z-test" id="z2">요소2</div>
         <div class="z-test" id="z3">요소3</div>

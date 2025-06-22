@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .container {
+      display: flex;
+      width: 500px;
+      height: 150px;
+      border: 2px dashed gray;
+      margin-bottom: 20px;
+    }
+
+    .item {
+      width: 60px;
+      margin: 0 10px;
+      background: skyblue;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .tall { height: 100px; font-size: 16px; }
+    .mid { height: 70px; font-size: 14px; }
+    .short { height: 40px; font-size: 12px; }
+
+    .label {
+      font-weight: bold;
+      margin: 20px 0 5px;
+    }
+  </style>
+</head>
+<body>
+    
+  <div class="label">align-items: flex-start (위쪽 정렬)</div>
+  <div class="container" style="align-items: flex-start;">
+    <div class="item tall">Tall</div>
+    <div class="item mid">Mid</div>
+    <div class="item short">Short</div>
+  </div>
+
+  <div class="label">align-items: center (세로 가운데)</div>
+  <div class="container" style="align-items: center;">
+    <div class="item tall">Tall</div>
+    <div class="item mid">Mid</div>
+    <div class="item short">Short</div>
+  </div>
+
+  <div class="label">align-items: flex-end (아래쪽 정렬)</div>
+  <div class="container" style="align-items: flex-end;">
+    <div class="item tall">Tall</div>
+    <div class="item mid">Mid</div>
+    <div class="item short">Short</div>
+  </div>
+
+  <div class="label">align-items: baseline (글자 기준선 맞춤)</div>
+  <div class="container" style="align-items: baseline;">
+    <div class="item tall">T<br>all</div>
+    <div class="item mid">Mid</div>
+    <div class="item short">Short</div>
+  </div>
+
+  <div class="label">align-items: stretch (높이 자동 확장)</div>
+  <div class="container" style="align-items: stretch;">
+    <div class="item" style="height: auto;">A</div>
+    <div class="item" style="height: auto;">B</div>
+    <div class="item" style="height: auto;">C</div>
+  </div>
+
+</body>
+</html>
