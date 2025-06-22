@@ -51,19 +51,23 @@
 
         section {
         margin-bottom: 40px;
-        margin-left: 10px;
         }
 
+        span{padding:20px}
+
         h2 {
+        margin-top: 15px;
         margin-bottom: 15px;
         color: rgb(81, 75, 75);
-        background-color: rgba(0,0,0,0.05)
+        background-color: rgba(0,0,0,0.05);
+        border-radius: 10px;
         }
 
         .skill-box {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
+        padding-top: 15px;
         }
 
         .skill-box span {
@@ -75,17 +79,17 @@
         border: 1px solid #a2a4ad;
         }
         
-        .projects ul {
+        .project ul {
         padding-left: 30px;
         }
 
-        .projects a {
+        .project a {
          color: #727b98;
         text-decoration: none;
         
         }
 
-        .projects a:hover {
+        .project a:hover {
         text-decoration: underline;
         }
 
@@ -119,20 +123,19 @@
   </header>
 
 
-
-
   <main>
     <section class="intro">
-      <h2>자기소개</h2>
+      <h2><span>자기소개</span></h2>
       <br>
-      <p>안녕하세요! 사용자 중심 UI/UX를 지향하는 프론트엔드 개발자 백가영입니다.</p>
+      <p>안녕하세요! 끈임없이 배우고 성장하는 개발자 백가영입니다! <br>
+          매일 더 나은 코드를 고민합니다.</p>
     </section>
 
     <hr>
     <br><br>
 
     <section class="skill">
-      <h2>기술</h2>
+      <h2><span>기술</span></h2>
       <div class="skill-box">
         <span>HTML</span>
         <span>CSS</span>
@@ -141,8 +144,8 @@
       </div>
     </section>
 
-    <section class="projects">
-      <h2>프로젝트</h2>
+    <section class="project">
+      <h2><span>프로젝트</span></h2>
       <ul id="project-list">
         <li><a href="https://github.com/baekkayoung/" target="_blank">Github</a></li>
         <li><a href="https://notion.com/baekkayoung/" target="_blank">Notion</a></li>
@@ -150,7 +153,7 @@
     </section>
 
     <section class="education">
-      <h2>학력</h2>
+      <h2><span>학력</span></h2>
       <p>인명여자고등학교 졸업 (2014 ~ 2017)</p>
       <p>부천대학교 졸업 (2017 ~ 2021)</p>
     </section>
