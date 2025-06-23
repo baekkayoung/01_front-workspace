@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제4</title>
+    <style>
+        #text {border: 1px solid black;
+            height: 30px;}
+        #textbox1
+            {border: 1px solid red;
+            height: 250px;
+            width: 500px;
+        }
+        #textbox2 {border: 1px solid red;
+            height: 200px;}
+
+        #wrap {border: 1px solid black;
+             height: 300px;
+            width: 600px;
+            padding: 0px 10px;}
+
+    </style>
+</head>
+<body>
+    <!--문제 1-->
+    <fieldset>
+        <legend>보기</legend>
+        <input type="text" id="text1" class="text"></input>
+    </fieldset><br>
+
+    <div id="textbox1"></div>
+    <button onclick="checkTest()">확인하기</button>
+    <br><br>
+
+    <script>
+        function checkTest(){
+            const textbox = document.getElementById("textbox1")
+            const text1 =  document.getElementById("text1")
+            const length = text1.value.length;
+
+        
+        textbox1.innerHTML += "보기의 문자열 길이는 " + length +"글자 입니다."
+        
+        }
+
+    </script>
+
+    <div id="wrap">
+        <div id="box2"></div>
+            <fieldset>
+                <legend>보기</legend>
+                콜라, 사이다, 햄버거, 피자, 한약
+            </fieldset><br>
+
+            <div id="textbox2"></div>
+            <button onclick="listbutton()">확인하기</button>
+    </div>
+
+    <script>
+        function listbutton(){
+            
+            const textbox2 = document.getElementById("textbox2")
+            const arr = ["콜라","사이다","햄버거","피자","한약"]
+            
+            let ol ="<ol>"
+
+                for(let i=0 ; i<arr.length; i++){
+                    ol += "<li>" + arr[i] + "</li>";
+                }
+                ol += "</ol>";
+                textbox2.innerHTML = ol;
+
+            
+            
+            //textbox2.innerHTML += "<ol>"
+            //textbox2.innerHTML += "<li>" + arr[0]+"</li>"
+            //textbox2.innerHTML += "<li>" + arr[1]+"</li>"
+            //textbox2.innerHTML += "<li>" + arr[2]+"</li>"
+            //textbox2.innerHTML += "<li>" + arr[3]+"</li>"
+            //textbox2.innerHTML += "<li>" + arr[4]+"</li>"
+            //textbox2.innerHTML += "</ol>"
+
+
+        }
+
+
+
+    </script>
+   
+    
+</body>
+</html>
