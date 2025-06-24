@@ -47,9 +47,11 @@
 
             area1.innerHTML += "substring(시작인덱스)" + str1.substring(6) + "<br>"
             area1.innerHTML += "substring(시작인덱스, 골인덱스)" + str1.substring(0,3) + "<br>"
+            // 바로 앞까지
 
             const str2 ="사과,바나나,복숭아,키위"
-            const fruits = str2.split(",")
+            const fruits = str2.split(",") //, 사라짐
+            
 
             area1.innerHTML += "fruits : " + fruits + "<br>"
             area1.innerHTML += "frurits의 자료형:" + typeof(fruits) + "<br>"
@@ -121,12 +123,12 @@
 
             //타언어에서는 "7"-7 => 오류(*,/ 마찬가지)
 
-            // 덧셈 외의 산술 연산 가능!
+            // 덧셈 외 빼기, 곱하기, 나누기는 산술 연산 가능!
             // 문자열이 자동 형변환 돼서 숫자로 변환된 뒤 산술 연산됨!
             // 단, 문자열에는 숫자만 존재해야됨
             const test6 = "7" - 7; // 0
-            const test7 = "7" * 7; //
-            const test8 = "7" / 7;
+            const test7 = "7" * 7; //49
+            const test8 = "7" / 7; // 1
 
             const area4 = document.querySelector("#area4")
             area4.innerHTML ="test6: " + test6 + "<br>"
@@ -180,7 +182,7 @@
         function plus(){
             // 인풋요소의 value 값은 무조건 문자열로 옴
             const num1 = document.getElementById("num1").value // "10" 
-            const num2 = document.getElementById("num1").value // "20"
+            const num2 = document.getElementById("num2").value // "20"
 
             //const sum = num1 + num2; // "10" +"20" =>"1020"
             const sum = Number(num1) + Number(num2);

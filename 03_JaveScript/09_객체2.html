@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체2</title>
+    <style>
+        .area{border:  1px solid black;
+            background-color: lightblue;
+            height: 250px;}
+    </style>
+</head>
+<body>
+
+    <h3>* 객체 배열을 사용한 다량의 데이터 관리</h3>
+    <button onclick="test1()">실행확인</button>
+    <div id="area1" class="area"></div>
+
+
+<script>
+    function test1(){
+
+        const student0 = {name:"김윤정" , java:100, oracle: 90, html:70, css:60} //키 벨류 
+        const student1 = {name:"백가영", java:60, oracle:100, html:80, css:70}
+        const student2 = {name:"박현아", java:70, oracle:80, html:100, css:50}
+        const student3 = {name:"어수용", java:100, oracle:60, html:80, css:50}
+
+        const students = [];
+        
+        students.push(student0)
+        students.push(student1)
+        students.push(student2)
+        students.push(student3)
+
+        //console.log(students[0].name)
+
+        // 객체. 속성 = 새로운 값
+        for(let i in students){// 배열이라 인텍스 담김. s:배열
+            students[i].javascript = 100;
+            students[i].getSum = function(){ //메소드 속성
+                return this.java + this.oracle + this.html + this.css + this.javascript //현재 접근하고 있는 요소의~
+                //console.log(students)
+                }
+            students[i].getAvg = function(){
+                return this.getSum() / 5;
+                }
+
+            }
+
+            const area1= document.getElementById("area1");
+            for(let i in students){
+                area1.innerHTML += "이름: " + students[i].name
+                                + ", 총점 : " + students[i].getSum()
+                                + ", 평균 : " + students[i].getAvg()
+                                            //메소드 속성에도 ()
+
+        }
+    }
+            
+    </script>
+
+    <h3>* 생성자 함수</h3>
+    <p>new 키워드를 통해서 객체를 생성할 수 있는 함수를 의미 (함수명 제시시 첫글자 대문자로)</p>
+    <button onclick="test2()">실행확인</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        function test2(){
+            const student0 = new Student("장우석", 100, 70, 60, 80, 90)
+            const student1 = new Student("김기석", 90, 60, 100, 70, 90)
+            const student2 = new Student("박찬형", 80, 90, 50, 50, 80)
+
+            //console.log(student0)
+
+            const students = [student0, student1, student2];
+            console.log(students)
+
+            for(let i in students){ //배열이니까 i에 index 달림
+                document.getElementById("area2").innerHTML += "이름 : " + students[i].name
+                                                            +", 총점:" + students[i].getSum()
+                                                            +",평균: "+ students[i].getAvg()+"<br>"
+
+            }
+
+
+        }
+
+        function Student(name, java, oracle, html, css, javascript){
+
+            //일반 속성
+            //객체.새로운속성명 = 새로운 값 ==> 객체에 속성 추가
+            //
+            this.name = name;
+            this.java = java;
+            this.oracle = oracle; //이 객체에 오라클 추가서 오라클 점수 받아온거 넣겠다
+            this.html = html;
+            this.css = css;
+            this.javascript = javascript;
+            
+            // 메소드 속성 => 속성값에 함수가 있는거
+
+            this.getSum = function(){
+                return this.java + this.oracle + this.html + this.css + this.javascript 
+
+            }
+
+            this.getAvg = function(){
+                return this.getSum() / 5 //직접 나눠줘야..
+            }
+
+        }
+
+    </script>
+
+    <hr>
+    <h3>* Date 내장 객체</h3>
+    <button onclick="test3()">실행확인</button>
+    <div id="area3" class="area"></div>
+
+    <script>
+        function test3(){
+            const area3 = document.getElementById("area3");
+            const date1 = new Date(); //현재 날짜 및 시간
+
+            //2025-06-09로 셋팅
+            const date2 = new Date(2025,6-1, 9)
+
+            //시분초까지
+            const date3 = new Date(2025,6-1,0,15,20,30)
+
+            //1s == 1000ms
+            //5s == 5000ms
+            const date4 = new Date(2025,6-1,0,15,20,30,5000)
+
+            area3.innerHTML += "Date() : "  + date1+"<br>"
+            area3.innerHTML += "Date(년도,월,일) : " + date2 + "<br>"
+
+            area3.innerHTML += "Date(년도, 월, 일, 시, 분, 초 ) : " +date3 +"<br>"
+            area3.innerHTML += "Date(년도, 월, 일, 시, 분, 초, 밀리세컨 ) :" +date4 +"<br>"
+            
+            area3.innerHTML += "년도: " + date1.getFullYear() +"<br>"
+            area3.innerHTML += "월: "+ (date1.getMonth() + 1) +"<br>"
+            area3.innerHTML += "일: "+ date1.getDate() + "<br>"
+            //시 :getHours(), 분: getMinutes(), 초: getSeconds()
+
+            // d-day 계산시에 많이 씀
+
+            // 현재 날짜부터 종강일 (2026년 1월 9일) 까지 남은 일수 d-day
+
+            const end = new Date(2026,1-1,9); // 종강날짜
+            const now = new Date()
+
+            area3.innerHTML += (end-now) // 현재 날짜부터 종강 날짜까지 몇 밀리세컨초
+
+            /*
+                1s == 1000ms
+                1m == 60s ==60*1000ms
+                1h == 60m ==60*60s == 60*60*1000m
+                1d == 24h == 24*60m == 24*60*60s= 24*60*60*1000ms
+
+            */
+            const dday = (end-now) /(24*60*60*1000);
+            alert("종강까지" + Math.round(dday) + "일 남았습니다!")
+            
+
+        }
+
+
+    
+    </script>
+</body>
+</html>

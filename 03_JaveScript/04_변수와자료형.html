@@ -36,6 +36,8 @@
             userId = "user03" // 재할당
             console.log(userId)
 
+            //user01~03 다 뜸..
+
             console.log ("-------------")
 
 
@@ -44,7 +46,7 @@
             // 2) let은 중복선언 불가능. 그러나 재할당은 가능
 
 
-            let userPwd = "pass01" //빨간줄은 그냥 앱 기능
+            let userPwd = "pass01" //선언. 빨간줄은 그냥 앱 기능
             console.log(userPwd)
             
             // 실수로 또 만듦
@@ -54,7 +56,7 @@
             //dentifier 'userPwd' has already been declared 
 
             userPwd = "pass02"; //재할당. 비밀번호 변경
-            console.log(userPwd)
+            console.log(userPwd) // pass01, 02 둘다 뜸
 
             console.log("--------------")
 
@@ -98,19 +100,18 @@
     
     <script>
     function diffScope(){
-            // 1) var는 funcion scope == 변수가 선언된 함수 영역 내에서 사용 가능
+            // 1) var는 function scope == 변수가 선언된 함수 영역 내에서 사용 가능
             var name = "장원영"
             console.log(name);
 
             if(true){
                 var age = 20;
 
-            }
-
+            }//if문 밖
             console.log(age); /// if문 밖에 있지만 사용 가능
 
             for(var i=0; i<10; i++){
-            }
+            }// for문 밖
 
             console.log(i); // for문 밖에 있지만 사용 가능
 
@@ -126,7 +127,7 @@
             }
 
             //console.log(hobby);
-            //console.log(gender);
+            //console.log(gender); if 문 밖! 안 뜸
         }
 
 
@@ -142,8 +143,8 @@
         // 특정 함수 영역 밖에 선언된 변수는 전역변수(전체 지역 변수, 글로벌 변수)로 잡힘
         // 전역변수는 어디든 다 사용 가능
 
-        //function test(){
-        //   var test="변수" -> 지역변수
+        //  function test(){
+        //      var test="변수" -> 지역/전체/글로벌 변수
 
         var declareVar = "var로 전역변수";
         let declareLet = "let로 전역변수";

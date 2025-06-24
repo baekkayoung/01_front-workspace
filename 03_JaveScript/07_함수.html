@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .area{
+            border: 1px solid black;
+            width: 500px;
+            height: 100px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1> 함수 (function)</h1>
+    <!-- 우리가 만들면 함수 만들어져 있는 건 메소드-->
+    <h3 onclick="test1()">* 선언적 함수</h3>
+    <!--우리가 맨날 했던 function ~(){} -->
+    <!-- 아무 곳에 붙일 수 있음-->
+
+    <pre>
+        function 함수명([매개변수, 매개변수]){ <!--매개변수 생략 가능-->
+            해당 함수 호출시 실행할 소스코드;
+
+            [retrun 결과값;]
+        }
+    </pre>
+
+    <button onclick="test1()">실행확인</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        function test1(){
+            document.getElementById("area1").innerHTML += "test1() 함수 실행됨 <br>"
+        
+        }
+
+    </script>
+
+    <br>
+    <h3>* 익명함수(이름이 없는 함수)</h3>
+    <pre>
+        변수|속성 = function([매개변수, 매개변수,...]){
+            해당 함수 호출시 실행할 소스코드;
+
+            [retrun 결과값;]
+        }
+    </pre>
+
+
+    <button id="btn">실행확인</button> <!--온클릭 말고 아이디 부여 -->
+    <div id="area2" class="area"></div>
+
+    <script>
+        const btn = document.getElementById("btn");
+        btn.onclick = function(){//이름이 없어서 직접 호출 불가
+            //이벤트 속성에 대입되는 function == 이벤트 핸들러
+            document.getElementById("area2").innerHTML += "이벤트 핸들러를 통해 실행됨 <br>"
+        } // 여기저기 쓰지 못 함 btn이라는 아이디에 부여했기 때문에
+    </script>
+
+    <hr>
+
+    <h2>함수의 매개변수</h2>
+
+    <button onclick="test2('안녕하세요')">실행확인</button> <!--'':안녕하세요 - 인자 부여-->
+    <button onclick="test2(10)">실행확인</button> <!--숫자-->
+    <button onclick="test2([1,2,3])">실행확인</button><!--객체인 배열-->
+    <button onclick="test2(true)">실행확인</button> <!--boolean-->
+
+    <br>
+
+    <button onclick="test2(prompt('이름을 입력해주세요'))">실행확인</button> <!--입력하면 인자가 돼서 매개변수에게-->
+    <button onclick="test2('안녕하세요','반갑습니다')">실행확인</button> <!--두개 인자를 매개변수가 하나.. 처음거만 받음-->
+    <!--정의해둔 매개변수 개수보다 더 많이 전달 가능 오류 안남. 근데 초과된 전달값은 무시-->
+    <button onclick="test2(10, true, '안녕')">실행확인</button> <!--여러 값 가능-->
+    <button onclick="test2()">실행확인</button> <!-- 부여 안 하면 undefined-->
+    <!--정의 해둔 매개변수보다 더 적게 전달하는 거 가능! 단, undefined 뜰 수 있음-->
+
+    <div id="area3" class="area"></div>
+    <!--주는값은 인자 받는건 매개변수-->
+
+    <script>
+        function test2(value){ //let.const.var 변수명: 매개변수. 여러가 작성 가능 / 매개변수 제시시 자료형 지정x 선언 구문x => 변수명만!
+            document.getElementById("area3").innerHTML = value; //차은우 말고 value로 변경
+            // div 상자안에 여러 값을 첨부하려고 . value값에 여러 인자 부여. value는 임시고 내가 정해도 됨.
+
+        }
+    </script>
+
+    <h3>* 매개변수 관련 arguments 배열</h3>
+    <p>
+        함수 호출시 전달되는 값은 내부적으로 arguments 배열에 담긴다. <br>
+        * arguments : 모든 함수마다 내부적으로 하나씩 존재하는 배열 객체 <!--배열같은 객체-->
+    </p>
+
+    <button onclick="test3(11,12,1,5,7)">실행확인</button> <!--인자 5개: 매개변수 5개 필요: arg사용하면 아니어도 ㄱㅊ-->
+    <div id="area4" class="area"></div>
+     
+    <script>
+        function test3(){
+            //console.log(arguments[0]); 
+            //arg(5)로 뜸 안에 누르면 다섯개 값 다 들어가있는 거 확인 가능 []로 지목해서 불러내기 가능
+            const area4 =document.getElementById("area4");
+            
+            let sum = 0;
+            for(let i=0; i<arguments.length; i++){ //0.1.2.3.4
+                sum += arguments[i]; 
+            } 
+           
+        
+
+        area4.innerHTML += "총합: " + sum + "<br>"
+        area4.innerHTML += "평균: " + sum / arguments.length + "<br>"
+
+}
+
+    </script>
+
+    <h3> *매개변수에 this 관련 전달하기</h3>
+    <!-- this: 현재 이벤트가 발생한 요소 객체-->
+    <button onclick="test4(this)">버튼1</button> <!--this===<button onclick="test4(this)">버튼1</button>-->
+    <button onclick="test4(this.innerHTML)">버튼2</button>
+    <input type="button" onclick="test4(this.value)" value="버튼3"> <!--value만 해도 되는데?-->
+    <button id="btn4" onclick="test4(this.id)">버튼4</button>
+
+    <script>
+        function test4(a){ //매개변수
+            console.log(a)//버튼 자체가 로그에 뜸
+        
+
+            }
+
+    </script>
+
+    <br><br>
+
+    <button onclick="test5(this)">클릭</button>
+
+    <script>
+        function test5(el){ // 이제 el에는 버튼(윗줄)이 있음
+            // 버튼 배경색이 red
+            // 클릭 => 클릭됨
+
+            //test6this는 함수 호출할 때 특별한 값 this를 넘긴다는 의미이고
+            //test5el은 호출시 변수 el에 this에 저장된 값을 넘긴다는 의미이다
+            el.style.backgroundColor = "red";
+
+            el.innerHTML = "클릭됨";
+        }
+    </script>
+
+    <h2>함수의 리턴</h2>
+    <h3>* 일반적인 값 리턴</h3>
+
+    <button onclick="test6()">실행확인</button>
+    <div id="area5" class="area"></div>
+    
+    <script>
+        //1~100 사이의 랜덤 소수값을 발생시켜주는 함수 + 랜덤값을 retrun 하는 함수
+        function ran(){
+
+            const random = parseInt(Math.random() * 100 + 1); // 정수형으로 만들어줌
+            return random; //나를 호출(call)한 곳으로 돌아간다
+
+
+        }
+
+        function test6(){
+            document.getElementById("area5").innerHTML += "랜덤값 : " + ran() + "<br>"
+            // 여기서 ran()로 호출
+
+
+
+        }
+
+    </script>
+
+    <button onclick="console.log(ran())">클릭</button>
+
+
+    <br>
+
+    <h3>* 익명함수를 리턴</h3>
+    이름 : <input type="text" id="userName">
+    <button onclick="test7()()">실행확인</button>
+        <!--첫번째 소괄호는 test7 실행 소괄호. () 
+        retrun 펑션이 온 건 맞는데 실행할 소괄호가 없어서 추가해야 실행이 됨.-->
+    <script>
+        function test7(){
+            let inputEl = document.getElementById("userName");
+            //console.log(inputEl.value)
+            return function(){ //날 호출한 곳으로 돌아감 리턴함수는 소괄호를 추가해줘야 함
+                alert(inputEl.value) // alert 실행될것같은데 안됨.
+                }
+                //test7()을 호출하면 → 이 함수는 익명함수 하나를 return함
+                // 즉, test7() 자체는 실행되지만 실제 동작(alert)은 그 안에 리턴된 함수에 있음
+                //그래서 리턴된 함수도 실행해야 하니까 괄호가 한 번 더 필요한 것!
+        }
+
+
+
+
+    </script>
+</body>
+</html>
