@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간이 계산기</title>
+</head>
+<body>
+    <hr>
+    <h1>간이 계산기 만들기</h1>
+    <br>
+
+    첫번째 값 : <input type="text" id="input1">
+    <br>
+    두번째 값 : <input type="text" id="input2">
+    <br>
+    <input type="button" value="+" onclick="plus()">
+    <input type="button" value="-" onclick="minus()">
+    <input type="button" value="×" onclick="multiply()">
+    <input type="button" value="÷" onclick="divide()">
+    <input type="button" value="%" onclick="modulo()">
+    <br><br>
+    <div id="result">계산 결과 :</div>
+
+    <script>
+        //더하기
+        function plus(){
+            const input1 = Number(document.getElementById("input1").value);
+            const input2 = Number(document.getElementById("input2").value);
+
+            //const result = document.getElementById=("result").value
+            
+            const result = input1 + input2;
+
+            document.getElementById("result").innerHTML = result;
+        }
+
+        // 뺴기
+        function minus(){
+            const input1 = Number(document.getElementById("input1").value);
+            const input2 = Number(document.getElementById("input2").value);
+
+            const result = input1 - input2;
+
+            document.getElementById("result").innerHTML = result;
+        }
+
+        //곱하기
+
+        function multiply(){
+            const input1 = Number(document.getElementById("input1").value);
+            const input2 = Number(document.getElementById("input2").value);
+
+            const result = input1 * input2;
+
+            document.getElementById("result").innerHTML = result;
+        }
+
+        //나누기
+
+        function divide(){
+            const input1 = Number(document.getElementById("input1").value);
+            const input2 = Number(document.getElementById("input2").value);
+
+            const result = input1 / input2;
+
+            document.getElementById("result").innerHTML = result;
+
+        }
+
+        //나머지
+
+        function modulo(){
+            const input1 = Number(document.getElementById("input1").value);
+            const input2 = Number(document.getElementById("input2").value);
+
+            const result = input1 % input2;
+
+            document.getElementById("result").innerHTML = result;
+
+        }
+        
+        
+        
+
+
+
+
+    </script>
+
+
+</body>
+</html>
