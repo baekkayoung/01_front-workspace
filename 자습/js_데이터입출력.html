@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>데이터 출력</h1>
+    <h2>3. document.write("")</h2>
+    
+    <button onclick="documentWrite()">테이블 출력</button>
+    <!--const let var를 먼저 쓸거면 onclick이 아닌 id가 있어야 하잖아
+    그래서 onclick을 먼저 부여할거면 function으로 함수 만들어-->
+    <script>
+        function documentWrite(){
+
+            let a = "<table border='1'>"
+                a +="<tr>"
+                a +="<td>1</td>"
+                a +="<td>2</td>"
+                a +="</tr>"
+                a +="</table>"
+
+            document.write(a);
+                 
+        }
+        
+    </script>
+
+    <h2>4.innerHTML / innerTEXT</h2>
+    <div class="area" id="area1">
+        이 칸 안의 내용을 변경하시오
+    </div>
+    <button onclick="print()">출력하기</button>
+
+    <script>
+        function print(){
+            const area1 = document.getElementById("area1")
+
+            //area1.innerText = "<h2>innerText로 변경</h2>"
+            //console.log(area1.innerText)
+            area1.innerHTML ="<h2>innerHTML로 출력!</h2>"
+            console.log(area1.innerHTML)
+            area1.style.backgroundColor = "pink"
+
+        }
+
+    </script>
+
+    <h1>데이터 입력</h1>
+    <h2>1. .confirm("질문내용")</h2>
+
+    확인 버튼 : ture / 취소 버튼 : false <br>
+
+    <button onclick="confirmTest()">컨펌</button>
+    <div id="area2"></div>
+
+    <script>
+        function confirmTest(){
+            var quest = confirm("졸리면 확인, 아니면 취소")
+            var divEl = document.getElementById("area2")
+
+            if(quest == true){
+                divEl.innerHTML = "<h1>일어나!!</h1>"
+            }else{
+                divEl.innerHTML = "<b>잘했어요</b>"
+            }
+
+        }
+    </script>
+
+    <h2>2. .prompt("")</h2>
+    텍스트 상자와 확인/취소 버튼이 보여지는 알림창
+    모든게 문자열로 반환됨
+
+    <button onclick="promptTest1()">버튼1</button>
+    <div id="area3"></div>
+
+
+    <script>
+        function promptTest1(){
+            const name = prompt("당신의 이름은?")
+            const age = prompt("당신의 나이는?")
+        
+            const area3 = document.getElementById("area3")
+            area3.innerHTML = "어, 당신이 바로" + age + "살" + name + "님이군요"
+        }
+    </script>
+
+    <button onclick="promptTest2()">버튼2</button>
+    <ul id="area4"></ul>
+
+    <script>
+        function promptTest2(){
+            let num = prompt("숫자만 입력하세요")
+            let str = ""
+            for(let i=1 ; i <=num; i++ ){
+                str += "<li>목록" + i +"</li>"
+            }
+            let ulEl = document.getElementById("area4")
+            ulEl.innerHTML = str;
+        }
+    </script>
+
+    <h2>3. 선택한input요소.value</h2>
+    아이디 : <input type="text" id="userId"> <br>
+    비밀번호 : <input type="password" id="userPwd"> <br>
+    <button onclick="testInput()">클릭</button>
+    <br>
+    <input type="text" id="area5"> 
+
+    <script>
+        function testInput(){
+        let input1 =document.getElementById("userId")
+        let input2 =document.getElementById("userPwd")
+
+        let input3 =document.getElementById("area5");
+
+        input3.value = input1.value + "," + input2.value;
+
+
+        input1.value = "";
+        input2.value = "";
+        }
+
+    </script>
+
+    <h2>반복문</h2>
+    <button onclick="loop()"></button>
+
+    <script>
+        function loop(){
+            for(var i = 0; i<5 ; i++){
+                console.log(i);
+            }
+
+        }
+
+
+    </script>
+</body>
+</html>

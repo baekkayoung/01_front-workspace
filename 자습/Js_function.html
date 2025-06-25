@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 펑션 연습</title>
+</head>
+<body>
+
+    <h2>인라인</h2>
+    버튼 태그 안에 onclck후 바로 속성<br>
+    <button onclick="console.log('콘솔버튼')">콘솔확인</button>
+    <button onclick="alert('경고!')">위험</button>
+
+    <h2>인터널</h2>
+    익명함수<br>
+    <button id="btn">알림창 출력</button>
+
+    <script>
+        const btn = document.getElementById("btn");
+        btn.onclick = function(){
+            window.alert("알림창 떠요")
+        }
+    </script>
+
+    <button id="btn2">콘솔에 출력</button>
+    <script>
+        const btn2 = document.getElementById("btn2");
+        btn2.onclick = function(){
+            console.log("콘솔에 출력!")
+        }
+    </script>
+
+    <br>
+    기명함수<br>
+    <button onclick="consoleTest()">콘솔에 출력</button>
+    
+    <script>
+        function consoleTest(){
+            console.log("콘솔에 떠라!")
+        }
+    </script>
+
+    <button onclick="alertPrint()">알림창 출력</button>
+    <script>
+        function alertPrint(){
+            alert("알람창입니다")
+        }
+
+    </script>
+
+    
+</body>
+</html>
