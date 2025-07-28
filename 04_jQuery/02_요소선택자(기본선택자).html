@@ -37,5 +37,83 @@
 
         })
     </script>
+
+    <hr>
+
+    <h3>* 태그 선택자</h3>
+    <p>Java</p>
+    <p>Oracle</p>
+    <p>HTML</p>
+
+    <h5>CSS</h5>
+    <h5>JavaScript</h5>
+    <h5>jQuery</h5>
+
+    <script>
+    $(document).ready(function(){ // 이 문서가 준비됐을 때 함수 실행
+        // 순수 자바스크립트 방식 => document.getElementsByTagName("태그명"); : 배열에 담겨서..
+        console.log(document.getElementsByTagName("p")); // 지금 p에는 length만! 콘솔 각 style로 확인 
+        const p = document.getElementsByTagName("p");
+        //p.style.color= "pink"; //p는 요소가 아니라 배열
+        for(let i = 0; i<p.length; i++){
+            p[i].style.color = "pink";
+        }
+
+        // jQuery 방식 = > $("태그명")
+
+        $("h5").css("color","blue");
+
+        // 여러 종류의 요소들 선택
+        $("p, h5, #id1").css("backgroundColor","yellow");
+    }) //
+    </script>
+
+    <hr>
+    <h3> * 클래스 선택자 </h3>
+    <h1 class="item">Class1</h1>
+    <h1 class="item select">Class2</h1>
+    <h1 class="item select">Class2</h1>
+
+    <script>
+        $(document).ready(function(){
+            // 순수 자바스크립트 방식 => document.getElementsByClassName(); : 배열
+            const item = document.getElementsByClassName("item"); // [h1, h1, h1]
+            for(let i=0; i<item.length; i++){
+                item[i].style.color = "orange";
+                item[i].onclick = function(){
+                    console.log("클릭됨");
+                }
+            }
+
+            // jQuery 방식 => $(".클래스명")
+            $(".select").css("backgroundColor","pink");
+            $(".select").click(function(){
+                alert("클릭됨");
+            });
+
+            // .click() : 클릭 이벤트와 관련된 기능 수행하는 메소드
+        });
+    </script>
+
+    <!-- 
+        * 요소 선택하는 방법
+
+            순수 자바스크립트 방식              |               jQuery 방식
+    ==============================================================================================
+        document.getElementById("아이디명")    |            $("#아이디명")
+    document.getElementsByClassName("클래스명")|            $(".클래스명")
+    documnet.getElementsByTagName("태그명")    |             $("태그명")
+
+    * 선택된 요소의 속성값 변경하고자 할 때
+
+            순수 자바스크립트 방식              |               jQuery 방식
+    ==============================================================================================
+        선택된 요소 객체의 속성에 직접 접근해서  |         선택된 요소의 메소드 이용
+    ==============================================================================================
+    스타일 | .style.스타일속성 = "변경할 값";   |     .css("스타일속성","변경할값");
+     내용  |    .ineerHtml = "변경할 값";      |     .html("변경할 값");
+    이벤트 |    .on이벤트명 = function(){}     |     .이벤트명(function(){});
+    -->
+s
 </body>
 </html>
