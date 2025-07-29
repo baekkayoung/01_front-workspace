@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1>시각적인 효과</h1>
+    <p>페이지 내에 애니메이션 효과를 주기 위해 사용되는 메소드</p>
+
+    <h3>* show()와 hide(), toggle()</h3>
+    <p>선택된 요소가 점점 커지면서 보여지고, 점점 작아지면서 사라지게 하는 메소드</p>
+    
+    <button id="hide">숨기기</button>
+    <button id="show">보여주기</button>
+    <button id="toggle">토글</button> <br> <br>
+
+    <img id="test" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA5MjNfMjEw%2FMDAxNjk1NDMzODc0NTg2.Bi49D33LYUw8viIWo_c-k_JvHJpEGQsAaGkFfhnSG6kg.OJyXFlvYK1Phw03YathXLrtk823G80gzfg8gr5ib3ggg.JPEG.jobary1%2F%25B4%25D9%25BF%25EE%25B7%25CE%25B5%25E5_%252846%2529.jpg&type=sc960_832" alt=""> <br>
+
+    <div id="area" style="width: 100px; height: 100px; border: 1px solid black; background-color: red; "></div>
+    <script>
+        $(function(){
+            $("#hide").click(function(){
+                $("#test").hide(3000); // 3초
+            })
+
+            $("#show").click(function(){
+                $("#test").show(3000);
+            })
+
+            $("#toggle").click(function(){
+                $("#test").toggle(2000);
+            })
+        })
+    </script>
+
+    
+
+
+</body>
+</html>

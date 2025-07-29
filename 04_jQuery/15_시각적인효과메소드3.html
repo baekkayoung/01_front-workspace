@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        div{
+            background-color: beige;
+            border: 1px solid yellow;
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        p{
+            border: 1px solid lightblue;
+            width: 300px;
+            height: 100px;
+            border-radius: 10px;
+            margin-top: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+            display: none;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h3>* slideDown()과 slideUp()</h3>
+
+    <div>Q. 반품 언제 되나요?</div>
+    <p>A. 지금 확인중 입니다.</p>
+
+    <div>Q. 상품 위치를 알고 싶습니다.</div>
+    <p>A. 배송조회 해보시기 바랍니다.</p>
+
+    <div>Q. 8XL 사이즈 있나요?</div>
+    <p>A. 네 있습니다</p>
+
+    <div>Q. 배송비 있나요?</div>
+    <p>A. 상품 상세 정보 확인해주세요.</p>
+
+    <div>Q. 연락이 가능한 시간이 궁금해요.</div>
+    <p>A. 평일 오전 9시부터 오후 6시까지 입니다</p>
+    
+    <script>
+        $(function(){
+            $("div").click(function(){
+                // $(this) : 클릭 이벤트가 발생한 div 걔.
+                // 우리는 그 요소의 뒤의 요소를 선택해야함!
+                // $(this).next(): 클릭 이벤트가 발생한 div 요소 다음 뒤에 있는 p요소
+                // 보여지는 상태면 사라지게, 안 보이면 나타나게
+                const $p = $(this).next(); // jQuery 방식으로 선택된 요소를 담아둘 때 
+
+                if($p.css("display") =="none"){
+                    // 보여지게끔
+                    // $p.css("display","block"); 됨
+
+                    //기존거는 다 닫고 
+                    $(this).siblings("p").slideUp();
+                    // 지금거만 열리게
+                    $p.slideDown();
+                } else{
+                    $p.slideUp();
+                }
+
+            
+
+            })
+        })
+
+    </script>
+</body>
+</html>
