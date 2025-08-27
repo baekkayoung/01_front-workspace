@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일정 작성</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F6F1E7;
+            color: #5A5550;
+            padding: 20px;
+        }
+
+        .demo-button {
+            background: linear-gradient(135deg, #8B7355 0%, #6B5B47 100%);
+            color: #F6F1E7;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px;
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        /* 모달 오버레이 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* 모달 창 */
+        .modal {
+            background: #F6F1E7;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(90, 85, 80, 0.15);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        /* 모달 헤더 */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            border-bottom: 1px solid #E5DDD1;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #5A5550;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #8B7355;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #E5DDD1;
+            color: #5A5550;
+        }
+
+        /* 모달 내용 */
+        .modal-body {
+            padding: 24px;
+        }
+
+        /* 입력 그룹 */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .input-col {
+            flex: 1;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #5A5550;
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: #C17B47;
+        }
+
+        .input-field, .select-field, .textarea-field {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #D4C4B0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #FBF9F5;
+            color: #5A5550;
+            font-family: inherit;
+        }
+
+        .input-field:focus, .select-field:focus, .textarea-field:focus {
+            outline: none;
+            border-color: #8B7355;
+            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+        }
+
+        .select-field {
+            cursor: pointer;
+        }
+
+        .textarea-field {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* 날짜 시간 입력 */
+        .datetime-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .datetime-input {
+            flex: 1;
+        }
+
+        .datetime-separator {
+            color: #8B7355;
+            font-weight: 500;
+            padding: 0 8px;
+        }
+
+        /* 반복 설정 */
+        .repeat-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .repeat-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .repeat-option input[type="radio"] {
+            accent-color: #8B7355;
+        }
+
+        .repeat-option label {
+            font-size: 14px;
+            color: #5A5550;
+            cursor: pointer;
+        }
+
+        /* 에러 메시지 */
+        .error-message {
+            color: #C17B47;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* 버튼 그룹 */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+            justify-content: flex-end;
+        }
+
+        .btn-cancel {
+            background: #E5DDD1;
+            color: #8B7355;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background: #D4C4B0;
+            transform: translateY(-1px);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #8B7355 0%, #6B5B47 100%);
+            color: #F6F1E7;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        /* 애니메이션 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* 반응형 */
+        @media (max-width: 640px) {
+            .input-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .datetime-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .datetime-separator {
+                display: none;
+            }
+
+            .button-group {
+                flex-direction: column-reverse;
+            }
+
+            .btn-cancel, .btn-submit {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="demo-button" onclick="openModal()">일정 작성</button>
+
+    <!-- 모달 오버레이 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <!-- 모달 헤더 -->
+            <div class="modal-header">
+                <h2 class="modal-title">일정 작성</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+
+            <!-- 모달 내용 -->
+            <div class="modal-body">
+                <form id="scheduleForm">
+                    <!-- 분류 -->
+                    <div class="input-group">
+                        <label class="input-label">분류 <span class="required">*</span></label>
+                        <select class="select-field" id="category" required>
+                            <option value="">분류를 선택하세요</option>
+                            <option value="개발팀">개발팀</option>
+                            <option value="디자인팀">디자인팀</option>
+                            <option value="마케팅팀">마케팅팀</option>
+                            <option value="영업팀">영업팀</option>
+                            <option value="인사팀">인사팀</option>
+                            <option value="기획팀">기획팀</option>
+                            <option value="전체">전체</option>
+                        </select>
+                        <div class="error-message" id="categoryError"></div>
+                    </div>
+
+                    <!-- 일시 -->
+                    <div class="input-group">
+                        <label class="input-label">일시 <span class="required">*</span></label>
+                        <div class="datetime-group">
+                            <div class="datetime-input">
+                                <input type="date" class="input-field" id="startDate" required>
+                            </div>
+                            <div class="datetime-input">
+                                <input type="time" class="input-field" id="startTime" required>
+                            </div>
+                            <span class="datetime-separator">~</span>
+                            <div class="datetime-input">
+                                <input type="date" class="input-field" id="endDate" required>
+                            </div>
+                            <div class="datetime-input">
+                                <input type="time" class="input-field" id="endTime" required>
+                            </div>
+                        </div>
+                        <div class="error-message" id="datetimeError"></div>
+                    </div>
+
+                    <!-- 반복설정 -->
+                    <div class="input-group">
+                        <label class="input-label">반복설정</label>
+                        <div class="repeat-options">
+                            <div class="repeat-option">
+                                <input type="radio" id="noRepeat" name="repeat" value="none" checked>
+                                <label for="noRepeat">반복 안함</label>
+                            </div>
+                            <div class="repeat-option">
+                                <input type="radio" id="daily" name="repeat" value="daily">
+                                <label for="daily">매일</label>
+                            </div>
+                            <div class="repeat-option">
+                                <input type="radio" id="weekly" name="repeat" value="weekly">
+                                <label for="weekly">매주</label>
+                            </div>
+                            <div class="repeat-option">
+                                <input type="radio" id="monthly" name="repeat" value="monthly">
+                                <label for="monthly">매월</label>
+                            </div>
+                            <div class="repeat-option">
+                                <input type="radio" id="yearly" name="repeat" value="yearly">
+                                <label for="yearly">매년</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 제목과 장소 -->
+                    <div class="input-row">
+                        <div class="input-col">
+                            <label class="input-label">제목 <span class="required">*</span></label>
+                            <input type="text" class="input-field" id="title" placeholder="일정 제목을 입력하세요" required>
+                            <div class="error-message" id="titleError"></div>
+                        </div>
+                        <div class="input-col">
+                            <label class="input-label">장소 <span class="required">*</span></label>
+                            <input type="text" class="input-field" id="location" placeholder="장소를 입력하세요" required>
+                            <div class="error-message" id="locationError"></div>
+                        </div>
+                    </div>
+
+                    <!-- 내용기재 -->
+                    <div class="input-group">
+                        <label class="input-label">내용기재 <span class="required">*</span></label>
+                        <textarea class="textarea-field" id="content" placeholder="일정에 대한 자세한 내용을 입력하세요" required></textarea>
+                        <div class="error-message" id="contentError"></div>
+                    </div>
+
+                    <!-- 버튼 그룹 -->
+                    <div class="button-group">
+                        <button type="button" class="btn-cancel" onclick="closeModal()">취소</button>
+                        <button type="submit" class="btn-submit">일정 저장</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modalOverlay').classList.add('active');
+            
+            // 오늘 날짜를 기본값으로 설정
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0];
+            const currentTime = today.toTimeString().slice(0, 5);
+            
+            document.getElementById('startDate').value = todayStr;
+            document.getElementById('endDate').value = todayStr;
+            document.getElementById('startTime').value = currentTime;
+            
+            // 종료 시간은 시작 시간 + 1시간으로 설정
+            const endTime = new Date(today.getTime() + 60 * 60 * 1000);
+            document.getElementById('endTime').value = endTime.toTimeString().slice(0, 5);
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            resetForm();
+        }
+
+        function resetForm() {
+            document.getElementById('scheduleForm').reset();
+            clearErrors();
+        }
+
+        function clearErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.textContent = '';
+            });
+        }
+
+        function validateForm() {
+            clearErrors();
+            let isValid = true;
+
+            // 분류 검증
+            const category = document.getElementById('category').value;
+            if (!category) {
+                document.getElementById('categoryError').textContent = '분류를 선택해주세요.';
+                isValid = false;
+            }
+
+            // 날짜/시간 검증
+            const startDate = document.getElementById('startDate').value;
+            const startTime = document.getElementById('startTime').value;
+            const endDate = document.getElementById('endDate').value;
+            const endTime = document.getElementById('endTime').value;
+
+            if (!startDate || !startTime || !endDate || !endTime) {
+                document.getElementById('datetimeError').textContent = '시작 및 종료 일시를 모두 입력해주세요.';
+                isValid = false;
+            } else {
+                const startDateTime = new Date(`${startDate}T${startTime}`);
+                const endDateTime = new Date(`${endDate}T${endTime}`);
+                
+                if (endDateTime <= startDateTime) {
+                    document.getElementById('datetimeError').textContent = '종료 일시는 시작 일시보다 늦어야 합니다.';
+                    isValid = false;
+                }
+            }
+
+            // 제목 검증
+            const title = document.getElementById('title').value.trim();
+            if (!title) {
+                document.getElementById('titleError').textContent = '제목을 입력해주세요.';
+                isValid = false;
+            }
+
+            // 장소 검증
+            const location = document.getElementById('location').value.trim();
+            if (!location) {
+                document.getElementById('locationError').textContent = '장소를 입력해주세요.';
+                isValid = false;
+            }
+
+            // 내용 검증
+            const content = document.getElementById('content').value.trim();
+            if (!content) {
+                document.getElementById('contentError').textContent = '내용을 입력해주세요.';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // 폼 제출 이벤트
+        document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // 폼 데이터 수집
+                const formData = {
+                    category: document.getElementById('category').value,
+                    startDate: document.getElementById('startDate').value,
+                    startTime: document.getElementById('startTime').value,
+                    endDate: document.getElementById('endDate').value,
+                    endTime: document.getElementById('endTime').value,
+                    repeat: document.querySelector('input[name="repeat"]:checked').value,
+                    title: document.getElementById('title').value.trim(),
+                    location: document.getElementById('location').value.trim(),
+                    content: document.getElementById('content').value.trim()
+                };
+
+                console.log('일정 데이터:', formData);
+                alert('일정이 성공적으로 저장되었습니다!');
+                closeModal();
+            }
+        });
+
+        // 시작 날짜/시간 변경 시 종료 날짜/시간 자동 조정
+        document.getElementById('startDate').addEventListener('change', function() {
+            const startDate = this.value;
+            const endDateInput = document.getElementById('endDate');
+            
+            if (!endDateInput.value || endDateInput.value < startDate) {
+                endDateInput.value = startDate;
+            }
+        });
+
+        document.getElementById('startTime').addEventListener('change', function() {
+            const startTime = this.value;
+            const endTimeInput = document.getElementById('endTime');
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            
+            // 같은 날짜이고 종료 시간이 시작 시간보다 이른 경우
+            if (startDate === endDate && endTimeInput.value <= startTime) {
+                const startDateTime = new Date(`2000-01-01T${startTime}`);
+                const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000); // +1시간
+                endTimeInput.value = endDateTime.toTimeString().slice(0, 5);
+            }
+        });
+
+        // 모달 외부 클릭 시 닫기
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('modalOverlay').classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
