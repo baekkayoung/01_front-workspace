@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>양식 선택</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 250px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .search-box {
+      width: 90%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .list {
+      max-height: 300px;
+      overflow-y: auto;
+      border-top: 1px solid #eee;
+    }
+
+    .list-item {
+      padding: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .list-item:hover {
+      background: #f1f1f1;
+    }
+
+    .list-item.active {
+      background: #e9f5ff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" class="search-box" placeholder="양식명 입력" onkeyup="filterList()">
+    <div class="list" id="formList">
+      <div class="list-item active">휴가신청서</div>
+      <div class="list-item">연차신청서</div>
+      <div class="list-item">출장신청서</div>
+      <div class="list-item">보고서</div>
+      <div class="list-item">사직서</div>
+      <div class="list-item">회의보고서</div>
+      <div class="list-item">주간업무보고</div>
+      <div class="list-item">지출결의서</div>
+      <div class="list-item">업무협조요청서</div>
+      <div class="list-item">외근계획서</div>
+      <div class="list-item">조퇴신청서</div>
+
+    </div>
+  </div>
+
+  <script>
+    // 검색 필터링
+    function filterList() {
+      const input = document.querySelector(".search-box");
+      const filter = input.value.toLowerCase();
+      const items = document.querySelectorAll(".list-item");
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(filter) ? "" : "none";
+      });
+    }
+
+    // 클릭 시 선택 표시
+    document.querySelectorAll(".list-item").forEach(item => {
+      item.addEventListener("click", () => {
+        document.querySelectorAll(".list-item").forEach(i => i.classList.remove("active"));
+        item.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

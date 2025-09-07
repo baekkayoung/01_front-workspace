@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자원 예약 모달</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            color: #695C4F;
+        }
+
+        .open-modal-btn {
+            background-color: #695C4F;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .open-modal-btn:hover {
+            background-color: #5a4d40;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-container {
+            background-color: #EFE9DD;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: modalOpen 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes modalOpen {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 20px 20px 0 20px;
+            border-bottom: 2px solid #695C4F;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #695C4F;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #695C4F;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .close-btn:hover {
+            background-color: rgba(105, 92, 79, 0.1);
+        }
+
+        .modal-body {
+            padding: 0 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #695C4F;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #d32f2f;
+            margin-left: 3px;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d0c4b6;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #695C4F;
+            background-color: white;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #695C4F;
+        }
+
+        .time-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .time-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #d0c4b6;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #695C4F;
+            background-color: white;
+        }
+
+        .time-input:focus {
+            outline: none;
+            border-color: #695C4F;
+        }
+
+        .time-separator {
+            font-weight: 600;
+            color: #695C4F;
+            font-size: 16px;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            border-top: 1px solid #d0c4b6;
+            margin-top: 20px;
+        }
+
+        .btn-cancel {
+            padding: 12px 24px;
+            border: 2px solid #695C4F;
+            background-color: transparent;
+            color: #695C4F;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-cancel:hover {
+            background-color: #695C4F;
+            color: white;
+        }
+
+        .btn-reserve {
+            padding: 12px 24px;
+            border: none;
+            background-color: #695C4F;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .btn-reserve:hover {
+            background-color: #5a4d40;
+        }
+    </style>
+</head>
+<body>
+    <button class="open-modal-btn" onclick="openModal()">자원 예약 모달 열기</button>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">자원 예약</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="reservationForm">
+                    <div class="form-group">
+                        <label class="form-label">
+                            일시<span class="required">*</span>
+                        </label>
+                        <input type="date" class="form-input" id="reservationDate" required>
+                        <div class="time-container">
+                            <input type="time" class="time-input" id="startTime" placeholder="시작 시간" required>
+                            <span class="time-separator">~</span>
+                            <input type="time" class="time-input" id="endTime" placeholder="종료 시간" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            자원유형<span class="required">*</span>
+                        </label>
+                        <select class="form-select" id="resourceType" required>
+                            <option value="">자원유형을 선택하세요</option>
+                            <option value="회의실">회의실</option>
+                            <option value="강의실">강의실</option>
+                            <option value="세미나실">세미나실</option>
+                            <option value="장비">장비</option>
+                            <option value="차량">차량</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            자원이름<span class="required">*</span>
+                        </label>
+                        <select class="form-select" id="resourceName" required>
+                            <option value="">자원이름을 선택하세요</option>
+                            <option value="A동 회의실 101">A동 회의실 101</option>
+                            <option value="B동 강의실 201">B동 강의실 201</option>
+                            <option value="C동 세미나실 301">C동 세미나실 301</option>
+                            <option value="프로젝터">프로젝터</option>
+                            <option value="노트북">노트북</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            예약자<span class="required">*</span>
+                        </label>
+                        <input type="text" class="form-input" id="reserver" placeholder="예약자 이름을 입력하세요" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">참석자</label>
+                        <input type="text" class="form-input" id="participants" placeholder="참석자를 입력하세요 (선택)">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">사용 목적</label>
+                        <input type="text" class="form-input" id="purpose" placeholder="사용 목적을 입력하세요 (선택)">
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeModal()">취소</button>
+                <button type="button" class="btn-reserve" onclick="submitReservation()">예약</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.getElementById('reservationForm').reset();
+        }
+
+        function submitReservation() {
+            const form = document.getElementById('reservationForm');
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#d32f2f';
+                } else {
+                    field.style.borderColor = '#d0c4b6';
+                }
+            });
+
+            if (isValid) {
+                alert('예약이 완료되었습니다!');
+                closeModal();
+            } else {
+                alert('필수 항목을 모두 입력해주세요.');
+            }
+        }
+
+        // 모달 외부 클릭시 닫기
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
